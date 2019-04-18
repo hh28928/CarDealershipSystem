@@ -32,7 +32,7 @@ public class InventoryPresenter implements Publisher
 		for (InventoryCarModel car : inventoryItems) {
 			renderItems.add(new InventoryCarRenderable(car.getVIN(), car.getMake(), car.getModel(), car.getColor(), car.getPrice()));
 		}
-		currentView = new MainView(renderItems);
+		currentView = new MainView(renderItems, this);
 		this.renderView();
 	}
 	

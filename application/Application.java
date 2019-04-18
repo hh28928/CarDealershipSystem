@@ -5,23 +5,20 @@ import mailing.brokers.MessageBroker;
 
 import mailing.messages.Message;
 import mailing.subscribers.EmailAccount;
+import mailing.publishers.Publisher;
 
 import javax.swing.*;
 import java.awt.*;
 
 
-class Application extends javax.swing.JFrame {
+class Application extends javax.swing.JFrame implements Publisher {
 	
 	private MessageBroker broker;
-	private InventoryPresenter inventory;
 	
 	
 	public void run() {
 		//init the message broker system
 		broker = new MessageBroker();
-		
-		//init the inventory system
-		inventory = new InventoryPresenter(broker);
 		
 		
 		
@@ -43,15 +40,15 @@ class Application extends javax.swing.JFrame {
 		inventory.publish(broker, new Message("test2", "no one should get me"));
 		inventory.publish(broker, new Message("test1", "both guys should get me"));*/
 		
-
-			
-		
-		
 	}
 	
 	public static void main(String[] args) {
 		Application app = new Application();
 		app.run();
+	}
+	
+	public void publish(MessageBroker broker, Message message) {
+		this.broker.sendMessage(message);
 	}
 	
 
@@ -84,7 +81,7 @@ class Application extends javax.swing.JFrame {
 			sendButton = new javax.swing.JButton();
 			unsubscribeButton = new javax.swing.JButton();
 
-			setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+			
 
 			systemLabel.setText("Select a system to enter");
 
@@ -281,8 +278,7 @@ class Application extends javax.swing.JFrame {
 		private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {   
 			                                        
 			//broadcast the message
-			System.out.println("SENT " + this.publishMessageField.getText() + " to " + this.publishTopicField.getText());
-			broker.sendMessage(new Message(this.publishTopicField.getText(), this.publishMessageField.getText()));
+			this.publish(this.broker, new Message(this.publishTopicField.getText(), this.publishMessageField.getText()));
 			
 			//clear input fields to this section when the message is sent
 			this.publishTopicField.setText("");
@@ -292,8 +288,7 @@ class Application extends javax.swing.JFrame {
 		}     
 		
 		private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-			// TODO add your handling code here:
-			System.out.println("GOING TO INVENTORY SECTION");
+			InventoryPresenter inventory = new InventoryPresenter(broker);
 			
 		}                                        
 

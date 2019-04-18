@@ -61,10 +61,16 @@ public class MessageBroker {
 	
 	
 	public String toString() {
+		StringBuilder result = new StringBuilder();
 		for (String topic : topics.keySet()) {
-			System.out.println("hehe");
+			result.append(topic + ": [");
+			
+			for (Subscriber s : topics.get(topic)) {
+				result.append(s.toString() + ", ");
+			}
+			result.append("]\n");
 		}
-		return "";
+		return result.toString();
 	}
 	
 }
