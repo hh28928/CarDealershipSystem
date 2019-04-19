@@ -1,0 +1,1 @@
+cd application; rm *.class;
