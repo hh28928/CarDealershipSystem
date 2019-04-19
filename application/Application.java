@@ -39,8 +39,8 @@ class Application extends javax.swing.JFrame implements Publisher {
 		this.broker.sendMessage(message);
 	}
 	
-	@SuppressWarnings("unchecked")
-	// <editor-fold defaultstate="collapsed" desc="Generated Code">                          
+	//initialize UI components
+	@SuppressWarnings("unchecked")                        
 	private void initComponents() {
 
 		systemLabel = new javax.swing.JLabel();
@@ -63,7 +63,6 @@ class Application extends javax.swing.JFrame implements Publisher {
 		sendButton = new javax.swing.JButton();
 		unsubscribeButton = new javax.swing.JButton();
 
-		
 
 		systemLabel.setText("Select a system to enter");
 
@@ -248,29 +247,37 @@ class Application extends javax.swing.JFrame implements Publisher {
 	}                  
 
 	private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {    
+		//validation
 		if (!validateSubscriptionFields()) return;
 
+		//collect the fields
 		String emailAccount = this.subscriberField.getText().split("@")[0];
 		String emailServer = this.subscriberField.getText().split("@")[1];
 		String topic = this.subscriberTopicField.getText();
 		
+		//subscribe
 		EmailAccount email1 = new EmailAccount(emailAccount, emailServer, broker);
 		email1.subscribe(topic);
 		
+		//clear input fields
 		this.subscriberField.setText("");
 		this.subscriberTopicField.setText("");
 	}   
 	
 	private void unsubscribeButtonActionPerformed(java.awt.event.ActionEvent evt) { 
+		//validation
 		if (!validateSubscriptionFields()) return;
 		
+		//collect the fields
 		String emailAccount = this.subscriberField.getText().split("@")[0];
 		String emailServer = this.subscriberField.getText().split("@")[1];
 		String topic = this.subscriberTopicField.getText();
 		
+		//unsubscribe
 		EmailAccount email1 = new EmailAccount(emailAccount, emailServer, broker);
 		email1.unsubscribe(topic);
 		
+		//clear input fields
 		this.subscriberField.setText("");
 		this.subscriberTopicField.setText("");
 	}                                            
@@ -287,7 +294,8 @@ class Application extends javax.swing.JFrame implements Publisher {
 		
 	}     
 	
-	private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+	private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {  
+		//open the inventory                                            
 		InventoryPresenter inventory = new InventoryPresenter(broker);
 		
 	}                                        
