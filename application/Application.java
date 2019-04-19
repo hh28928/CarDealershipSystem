@@ -283,38 +283,41 @@ class Application extends javax.swing.JFrame implements Publisher {
 	}                                            
 
 	private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {   
-		                                        
+		//validate fields
+		if (this.publishTopicField.getText().trim().isEmpty()) {
+			System.out.println("No topic provided, cannot publish message.");
+			return;
+		}  
+		if (this.publishMessageField.getText().trim().isEmpty()) {
+			System.out.println("No message provided, cannot publish message.");
+			return;
+		}  
+		
+		
 		//broadcast the message
 		this.publish(this.broker, new Message(this.publishTopicField.getText(), this.publishMessageField.getText()));
 		
 		//clear input fields to this section when the message is sent
 		this.publishTopicField.setText("");
 		this.publishMessageField.setText("");
-		
-		
+	
 	}     
 	
 	private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {  
 		//open the inventory                                            
 		InventoryPresenter inventory = new InventoryPresenter(broker);
-		
 	}                                        
 
 	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-		// TODO add your handling code here:
-		System.out.println("GOING TO FINANCE SECTION");
-		
+		System.out.println("GOING TO FINANCE SECTION");	
 	}     
 	
 	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-		// TODO add your handling code here:
 		System.out.println("GOING TO SERVICE SECTION");
-		
 	}                                           
 
 	
-
-	// Variables declaration - do not modify                     
+	// UI variables                    
 	private javax.swing.JLabel emailLabel;
 	private javax.swing.JButton financeButton;
 	private javax.swing.JButton inventoryButton;
@@ -333,7 +336,5 @@ class Application extends javax.swing.JFrame implements Publisher {
 	private javax.swing.JLabel subscriptionSectionLabel;
 	private javax.swing.JLabel systemLabel;
 	private javax.swing.JLabel topicLabel;
-	private javax.swing.JButton unsubscribeButton;
-	// End of variables declaration                   
+	private javax.swing.JButton unsubscribeButton;                
 }
-
