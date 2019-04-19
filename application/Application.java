@@ -233,7 +233,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 	
 	private boolean validateSubscriptionFields() {
 		//validate topic
-		if (this.subscriberTopicField.getText().isEmpty()) {
+		if (this.subscriberTopicField.getText().trim().isEmpty()) {
 			System.out.println("No topic provided, cannot subscribe.");
 			return false;
 		}  
