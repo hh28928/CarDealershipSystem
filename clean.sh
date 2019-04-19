@@ -1,1 +1,1 @@
-cd application; rm *.class;
+find . -name "*.class" -type f -delete;
