@@ -1,7 +1,7 @@
 package finance.models;
 
-import java.util.*
-import inventory.models.CarModel
+import java.util.*;
+import inventory.models.CarModel;
 public class FinanceCarModel
 {
 	protected String vin;

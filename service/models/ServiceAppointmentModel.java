@@ -7,7 +7,7 @@ public class ServiceAppointmentModel
 protected String comments;
 protected CarModel c_model;
 protected LocalDate date;
-protected String email
+protected String email;
 
 public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
 {

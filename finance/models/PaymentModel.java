@@ -1,6 +1,6 @@
 package finance.models;
 
-import java.util.*
+import java.util.*;
 
 public class PaymentModel
 {
