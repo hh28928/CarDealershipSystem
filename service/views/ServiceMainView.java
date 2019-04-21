@@ -138,8 +138,6 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
         }
         int selected = Integer.parseInt(appointment_list.getSelectedItem().substring(1,2));
         
-        //System.out.println(selected);
-        
         ServiceAppointmentModel chosenAppt = null;
         for(ServiceAppointmentModel appt : appointments)
         {
@@ -153,9 +151,25 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
         viewModel.switchView(detail_view);
     }                                                         
 
-    private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-        // TODO add your handling code here:
-    }                                                         
+    private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                                          
+      if(appointment_list.getSelectedObjects().length == 0)
+      {
+        return;
+      }
+      int selected = Integer.parseInt(appointment_list.getSelectedItem().substring(1,2));
+    
+      for(ServiceAppointmentModel appt : appointments)
+      {
+        if(appt.getID() == selected)
+        {
+          appointments.remove(appt);
+          break;
+        }
+      }
+      viewModel.switchView(new ServiceMainView(viewModel));
+      this.dispose();
+    }                                                        
 
     private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
