@@ -84,4 +84,31 @@ public String toString()
         return sb.toString();
 }
 
+//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
+public String getCSV()
+{
+        StringBuilder sb = new StringBuilder();
+        sb.append(c_model.getVIN());
+        sb.append("<|DELIMITER|>");
+        sb.append(c_model.getMake());
+        sb.append("<|DELIMITER|>");
+        sb.append(c_model.getModel());
+        sb.append("<|DELIMITER|>");
+        sb.append(c_model.getColor());
+        sb.append("<|DELIMITER|>");
+        sb.append(comments);
+        sb.append("<|DELIMITER|>");
+        sb.append(Integer.toString(date.getYear()));
+        sb.append("<|DELIMITER|>");
+        sb.append(Integer.toString(date.getMonthValue()));
+        sb.append("<|DELIMITER|>");
+        sb.append(Integer.toString(date.getDayOfMonth()));
+        sb.append("<|DELIMITER|>");
+        sb.append(email);
+        sb.append("<|DELIMITER|>");
+        sb.append(Integer.toString(apptID));
+        sb.append("<|DELIMITER|>");
+        return sb.toString();
+}
+
 }

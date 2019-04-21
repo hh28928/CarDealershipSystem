@@ -13,7 +13,9 @@ import service.viewmodels.ServiceViewModel;
 import javax.swing.*;
 import java.awt.*;
 import java.util.regex.*;
+import java.util.Scanner;
 import java.time.*;
+import java.io.*;
 
 class Application extends javax.swing.JFrame implements Publisher {
 	
@@ -28,13 +30,27 @@ class Application extends javax.swing.JFrame implements Publisher {
 
   //public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
 	//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
-		  //Test code to populate the menu wiht fake Appointments
-		  for(int i = 0; i<9; i++)
-		  {
-		    svm.addAppointment("Customer email #" + Integer.toString(i),"999","testmake","testmodel","red",LocalDate.now(),"testComment");
-		  }
-		  //Test code to populate the menu wiht fake Appointments
-		
+		try
+		{
+			Scanner in = new Scanner(new File("ServiceAppointments.csv"));
+			while(in.hasNextLine())
+			{
+				String temp = in.nextLine();
+				String[] apps = temp.split("\\<\\|DELIMITER\\|\\>");
+				String vin = apps[0];
+				String make = apps[1];
+				String model = apps[2];
+				String color = apps[3];
+				String comments = apps[4];
+				LocalDate date = LocalDate.of(Integer.parseInt(apps[5]), Integer.parseInt(apps[6]), Integer.parseInt(apps[7]));
+				String email = apps[8];
+				int id = Integer.parseInt(apps[9]);
+				svm.addAppointment(email,vin,make,model,color,date,comments,id);
+			}
+			in.close();
+		}
+		catch(Exception e)
+		{}
 		//init the widgets for the application window
 		initComponents();
 		
@@ -244,6 +260,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 		);
 
 		pack();
+		this.setLocationRelativeTo(null);
 	}   
 	
 	private boolean validateSubscriptionFields() {

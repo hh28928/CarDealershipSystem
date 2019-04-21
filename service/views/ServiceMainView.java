@@ -5,6 +5,7 @@ import service.models.ServiceAppointmentModel;
 import java.util.HashSet;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
+import java.io.*;
 
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
@@ -127,6 +128,7 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
         getAccessibleContext().setAccessibleName("Service Apointments Menu");
 
         setSize(610,375);
+        this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     private void add_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) 
@@ -197,9 +199,27 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
       this.dispose();
     }                                                        
 
-    private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        // TODO add your handling code here:
-        this.setVisible(false);
+    private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt)
+    {     
+        StringBuilder sb = new StringBuilder();
+        for(ServiceAppointmentModel app : appointments)
+        {
+          sb.append(app.getCSV());
+          sb.append("\n");
+        } 
+        //System.out.println(sb.toString());
+        try
+        {
+          File file = new File("ServiceAppointments.csv");
+          FileWriter f = new FileWriter(file);
+          f.write(sb.toString());
+          f.close();
+        }
+        catch(Exception e)
+        {
+          JOptionPane.showMessageDialog(this, "Error, failed to write data.");
+        }
+        this.dispose();
     }                                           
     
     public String render()

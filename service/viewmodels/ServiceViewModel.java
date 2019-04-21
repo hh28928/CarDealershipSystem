@@ -43,6 +43,13 @@ public void addAppointment(String email, String vin, String make, String model, 
   appointments.add(appt);
 }
 
+public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
+{
+  CarModel car = new CarModel(vin, make, model, color);
+  ServiceAppointmentModel appt = new ServiceAppointmentModel(car, comments, date, email, id);
+  appointments.add(appt);
+}
+
 public void updateAppointment(int id, ServiceAppointmentModel app)
 {
   for(ServiceAppointmentModel appt : appointments)
