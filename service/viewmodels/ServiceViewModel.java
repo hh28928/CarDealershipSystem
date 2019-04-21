@@ -15,12 +15,12 @@ public class ServiceViewModel implements Publisher
 protected MessageBroker broker;
 protected View currentView;
 
-private HashSet<ServiceAppointmentModel> appointments;
+private LinkedHashSet<ServiceAppointmentModel> appointments;
 
 public ServiceViewModel(MessageBroker broker)
 {
   this.broker = broker;
-  appointments = new HashSet<ServiceAppointmentModel>();
+  appointments = new LinkedHashSet<ServiceAppointmentModel>();
 }
 
 public void publish(MessageBroker mb, Message m)
@@ -36,10 +36,10 @@ public void switchView(View v)
 
 //	public CarModel(String vin, String make, String model, String color) 
 //  public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email) 
-public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments)
+public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
 {
   CarModel car = new CarModel(vin, make, model, color);
-  ServiceAppointmentModel appt = new ServiceAppointmentModel(car, comments, date, email);
+  ServiceAppointmentModel appt = new ServiceAppointmentModel(car, comments, date, email, id);
   appointments.add(appt);
 }
 
@@ -76,12 +76,12 @@ public void deleteAppointment(String email, LocalDate date)
 
 //public CarModel(String vin, String make, String model, String color) 
 //public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
-public HashSet<ServiceAppointmentModel> loadServiceAppointments()
+public LinkedHashSet<ServiceAppointmentModel> loadServiceAppointments()
 {
   CarModel testCar = new CarModel("999","testmake","testmodel","red");
   for(int i = 0; i<5; i++)
   {
-    appointments.add(new ServiceAppointmentModel(testCar,"TestAppointment #" + Integer.toString(i), LocalDate.now(), "Customer #" + Integer.toString(i)));
+    appointments.add(new ServiceAppointmentModel(testCar,"TestAppointment #" + Integer.toString(i), LocalDate.now(), "Customer #" + Integer.toString(i), i));
   }
   
   return appointments;

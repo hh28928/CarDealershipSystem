@@ -132,7 +132,23 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
     }                                                      
 
     private void update_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-        // TODO add your handling code here:
+        //System.out.println(appointment_list.getSelectedItem());
+        if(appointment_list.getSelectedObjects().length == 0)
+        {
+          return;
+        }
+        String selected = appointment_list.getSelectedItem().substring(1,2);
+        
+        System.out.println(selected);
+        return;
+        /*
+        ServiceAppointmentModel chosenAppt = null;
+        for(ServiceAppointmentModel appt : appointments)
+        {
+          
+        }
+        viewModel.switchView(new ServiceDetailView(chosenAppt));
+        */
     }                                                         
 
     private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          

@@ -4,17 +4,24 @@ import java.time.*;
 
 public class ServiceAppointmentModel
 {
+protected int apptID;
 protected String comments;
 protected CarModel c_model;
 protected LocalDate date;
 protected String email;
 
-public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
+public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
 {
         this.comments = comments;
         this.c_model = c_model;
         this.date = date;
         this.email = email;
+        this.apptID = id;
+}
+
+public int getID()
+{
+  return apptID;
 }
 
 public CarModel getCar()
@@ -50,6 +57,7 @@ public String getEmail()
 public String toString()
 {
         StringBuilder sb = new StringBuilder();
+        sb.append("(" + Integer.toString(apptID) + ")    ");
         sb.append("[");
         sb.append(date);
         sb.append("]  ");
