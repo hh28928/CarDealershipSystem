@@ -176,6 +176,7 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
     {                                                          
       if(appointment_list.getSelectedObjects().length == 0)
       {
+        JOptionPane.showMessageDialog(this, "You must select an appointment first.");
         return;
       }
       
