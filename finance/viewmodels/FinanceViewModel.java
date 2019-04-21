@@ -1,5 +1,9 @@
 package finance.viewmodels;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileReader;
+import java.io.FileWriter;
 import java.util.*;
 import inventory.views.View;
 import finance.views.FinanceMainView;
@@ -12,7 +16,9 @@ public class FinanceViewModel implements View
 {
     // the current view for the Finance Section
     private View currentView;
-    
+
+    private String data_location = "finance_data.csv";
+
     // list of current financed cars
     private Set<FinanceCarModel> financed_cars;
     
@@ -39,6 +45,16 @@ public class FinanceViewModel implements View
         
         try{
             FinanceCarModel new_car = new FinanceCarModel(car,price,amount_paid);
+            FileWriter writer = new FileWriter(data_location,true);
+            BufferedWriter bwr = new BufferedWriter(writer);
+            bwr.write(car.getVIN());
+            bwr.write(car.getMake());
+            bwr.write(car.getModel());
+            bwr.write(car.getColor());
+            bwr.write(price);
+            bwr.write(amount_paid);
+            bwr.close();
+            writer.close();
             this.financed_cars.add(new_car);
         }
         catch (Exception e)
@@ -62,10 +78,18 @@ public class FinanceViewModel implements View
     private Set<FinanceCarModel> loadFinancedCars()
     {
         Set<FinanceCarModel> cars = new HashSet<FinanceCarModel>();
-        try {
-            CarModel car = new CarModel("0XV135ND234", "Honda", "Civic", "Blue");
-            FinanceCarModel fin_car = new FinanceCarModel(car,20000);
-			cars.add(fin_car);
+        try(BufferedReader br = new BufferedReader(new FileReader(this.data_location))) {
+            String line;
+            while ((line = br.readLine()) != null)
+            {
+                String[] values = line.split(COMMA_DELIMITER);
+                if (values[0].equals("vin")){continue;}
+                else{
+                    CarModel temp_car = new CarModel(values[0],values[1],values[2],values[3]);
+                    FinancedCarModel temp_finance = new FinanceCarModel(temp_car,Integer.parseInt(values[4]),Integer.parseInt(values[5]));
+                    this.financed_cars.add(temp_finance);
+                }
+            }
 		} catch (Exception e) {
 			System.out.println("Error adding vehicle to financed cars: " + e.getMessage());
 		}
