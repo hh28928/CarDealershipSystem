@@ -45,7 +45,7 @@ public class FinanceMainView extends javax.swing.JFrame implements View
 		backButton = new javax.swing.JButton();
 		financeLabel = new javax.swing.JLabel();
         
-        this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        this.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         
         newFinanceButton.setText("New Financed Car");
         newFinanceButton.addActionListener(new java.awt.event.ActionListener() {

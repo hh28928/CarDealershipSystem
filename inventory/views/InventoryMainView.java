@@ -48,7 +48,7 @@ public class InventoryMainView extends javax.swing.JFrame implements View {
 		backButton = new javax.swing.JButton();
 		inventoryLabel = new javax.swing.JLabel();
 
-		this.setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+		this.setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
 		newItemButton.setText("New Item");
 		newItemButton.addActionListener(new java.awt.event.ActionListener() {
