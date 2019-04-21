@@ -29,9 +29,9 @@ class Application extends javax.swing.JFrame implements Publisher {
   //public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
 	//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
 		  //Test code to populate the menu wiht fake Appointments
-		  for(int i = 0; i<5; i++)
+		  for(int i = 0; i<9; i++)
 		  {
-		    svm.addAppointment("Customer email #" + Integer.toString(i),"999","testmake","testmodel","red",LocalDate.now(),"testComment",i);
+		    svm.addAppointment("Customer email #" + Integer.toString(i),"999","testmake","testmodel","red",LocalDate.now(),"testComment");
 		  }
 		  //Test code to populate the menu wiht fake Appointments
 		

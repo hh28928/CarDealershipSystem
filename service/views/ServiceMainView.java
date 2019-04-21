@@ -4,6 +4,8 @@ import inventory.views.View;
 import service.models.ServiceAppointmentModel;
 import java.util.HashSet;
 import java.util.regex.*;
+import javax.swing.JOptionPane;
+
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
     private ServiceViewModel viewModel;
@@ -124,20 +126,30 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
 
         getAccessibleContext().setAccessibleName("Service Apointments Menu");
 
-        pack();
+        setSize(610,375);
     }// </editor-fold>                        
 
-    private void add_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                       
-        // TODO add your handling code here:
+    private void add_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                                       
+        AddServiceAppointmentView add_view = new AddServiceAppointmentView(viewModel,this);
+        viewModel.switchView(add_view);
     }                                                      
 
     private void update_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
         //System.out.println(appointment_list.getSelectedItem());
         if(appointment_list.getSelectedObjects().length == 0)
         {
+          JOptionPane.showMessageDialog(this, "You must select an appointment first.");
           return;
         }
-        int selected = Integer.parseInt(appointment_list.getSelectedItem().substring(1,2));
+        
+        Pattern p = Pattern.compile("(\\([0-9]+\\))");
+        Matcher m = p.matcher(appointment_list.getSelectedItem()); 
+        m.find();
+        String temp = m.group(1);
+        temp = temp.substring(1,temp.length()-1);
+        
+        int selected = Integer.parseInt(temp);
         
         ServiceAppointmentModel chosenAppt = null;
         for(ServiceAppointmentModel appt : appointments)
@@ -148,6 +160,12 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
             break;
           }
         }
+        
+        if(chosenAppt == null)
+        {
+          return;
+        }
+        
         detail_view = new ServiceDetailView(chosenAppt,viewModel,this);
         viewModel.switchView(detail_view);
     }                                                         

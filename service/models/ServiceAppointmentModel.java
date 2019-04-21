@@ -9,7 +9,15 @@ protected String comments;
 protected CarModel c_model;
 protected LocalDate date;
 protected String email;
-protected static int uniqueID;
+
+public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
+{
+        this.comments = comments;
+        this.c_model = c_model;
+        this.date = date;
+        this.email = email;
+        this.apptID = this.hashCode();
+}
 
 public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
 {
@@ -63,7 +71,7 @@ public String getEmail()
 public String toString()
 {
         StringBuilder sb = new StringBuilder();
-        sb.append("(" + Integer.toString(apptID) + ")    ");
+        sb.append(String.format("%-" + 18 + "s", "(" + Integer.toString(apptID) + ")"));
         sb.append("[");
         sb.append(date);
         sb.append("]  ");
