@@ -3,6 +3,7 @@ import service.viewmodels.ServiceViewModel;
 import inventory.views.View;
 import service.models.ServiceAppointmentModel;
 import java.util.HashSet;
+import java.util.regex.*;
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
     private ServiceViewModel viewModel;
@@ -157,7 +158,14 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
       {
         return;
       }
-      int selected = Integer.parseInt(appointment_list.getSelectedItem().substring(1,2));
+      
+      Pattern p = Pattern.compile("(\\([0-9]+\\))");
+      Matcher m = p.matcher(appointment_list.getSelectedItem()); 
+      m.find();
+      String temp = m.group(1);
+      temp = temp.substring(1,temp.length()-1);
+      
+      int selected = Integer.parseInt(temp);
     
       for(ServiceAppointmentModel appt : appointments)
       {
