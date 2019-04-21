@@ -1,10 +1,11 @@
 package finance.views;
 
-import finance.viewwmodels.FinanceViewModel;
+import finance.viewmodels.FinanceViewModel;
 import java.lang.StringBuilder;
 import inventory.views.View;
 import java.util.*;
 import inventory.models.CarModel;
+import finance.models.FinanceCarModel;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -23,7 +24,7 @@ import org.jdesktop.swingx.*;
 /**
  * @author Justin Lee Plassmeyer
  */
-public class FinanceDetailView extends JFrame {
+public class FinanceDetailView extends javax.swing.JFrame implements View {
     private FinanceViewModel view;
     private FinanceCarModel car;
 
@@ -44,7 +45,7 @@ public class FinanceDetailView extends JFrame {
 
     private void okButtonActionPerformed(ActionEvent e) {
         View new_view = new FinancedMainView(this.view, this.view.getFinanced_cars());
-        this.financedViewModel.switchView(new_view);
+        this.view.switchView(new_view);
     }
 
     private void initComponents() {

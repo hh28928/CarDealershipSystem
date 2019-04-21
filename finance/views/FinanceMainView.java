@@ -4,10 +4,12 @@ import java.awt.event.*;
 import java.util.*;
 import javax.swing.border.*;
 import com.intellij.uiDesigner.core.*;
-import finance.viewwmodels.FinanceViewModel;
+import finance.viewmodels.FinanceViewModel;
 import java.lang.StringBuilder;
 import inventory.views.View;
-
+import finance.models.FinanceCarModel;
+import finance.views.AddFinanceView;
+import inventory.models.CarModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -44,20 +46,19 @@ public class FinanceMainView extends javax.swing.JFrame implements View
     }
 
     private void new_financeActionPerformed(ActionEvent e) {
-        View new_view = AddFinanceView(viewModel);
-        this.financedViewModel.switchView(new_view);
+        View new_view = new AddFinanceView(viewModel);
+        this.viewModel.switchView(new_view);
     }
     // itterates throuh the list of financed cars to find the correct vin
     // if is does not find it a popup will let the user know
     private void detailed_viewActionPerformed(ActionEvent e) {
         String enterd_vin = vin.getText();
-        Iterator<FinanceCarModel> current_car = financed_cars.iterator();
-        while(current_car.hasNext())
+        for(FinanceCarModel current_car: this.financed_cars)
         {
-            temp_car = current_car.getCar();
+            CarModel temp_car = current_car.getCar();
             if(enterd_vin.equals(temp_car.getVIN()))
             {
-                View view = new FinanceDetailView(this.viewModel,current_car)
+                View view = new FinanceDetailView(this.viewModel,current_car);
             }
         }
         JOptionPane.showMessageDialog(null,"Car could not be found");

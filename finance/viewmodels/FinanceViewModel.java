@@ -7,12 +7,12 @@ import java.io.FileWriter;
 import java.util.*;
 import inventory.views.View;
 import finance.views.FinanceMainView;
-import finance.model.FinanceCarModel;
+import finance.models.FinanceCarModel;
 import inventory.models.CarModel;
 
 
 
-public class FinanceViewModel implements View
+public class FinanceViewModel
 {
     // the current view for the Finance Section
     private View currentView;
@@ -67,7 +67,7 @@ public class FinanceViewModel implements View
     public void deleteFinancedCar(FinanceCarModel car)
     {
         try{
-            this.financed_cars.remove(new_car);
+            this.financed_cars.remove(car);
         }
         catch (Exception e)
         {
@@ -82,11 +82,11 @@ public class FinanceViewModel implements View
             String line;
             while ((line = br.readLine()) != null)
             {
-                String[] values = line.split(COMMA_DELIMITER);
+                String[] values = line.split(",");
                 if (values[0].equals("vin")){continue;}
                 else{
                     CarModel temp_car = new CarModel(values[0],values[1],values[2],values[3]);
-                    FinancedCarModel temp_finance = new FinanceCarModel(temp_car,Integer.parseInt(values[4]),Integer.parseInt(values[5]));
+                    FinanceCarModel temp_finance = new FinanceCarModel(temp_car,Integer.parseInt(values[4]),Integer.parseInt(values[5]));
                     this.financed_cars.add(temp_finance);
                 }
             }

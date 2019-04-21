@@ -1,6 +1,6 @@
 package finance.views;
 
-import finance.viewwmodels.FinanceViewModel;
+import finance.viewmodels.FinanceViewModel;
 import java.lang.StringBuilder;
 import inventory.views.View;
 import java.util.*;
@@ -23,7 +23,7 @@ import org.jdesktop.swingx.*;
 /**
  * @author Justin Lee Plassmeyer
  */
-public class AddFinanceView extends JFrame {
+public class AddFinanceView extends javax.swing.JFrame implements View {
     private String vin;
     private String make;
     private String model;
