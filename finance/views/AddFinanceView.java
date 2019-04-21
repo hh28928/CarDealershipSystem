@@ -41,6 +41,13 @@ public class AddFinanceView extends JFrame {
         this.financedViewModel = view;
         initComponents();
     }
+    public String render() {
+
+        this.setVisible(true);
+        StringBuilder response = new StringBuilder(financed_cars.size() + "Financed Car\n");
+        response.append("Car Vin: " + this.vin +  "\nCar Make " +this.make+"\nCar Model "+this.model+"\nCar Color "+this.color+"\nCar Price "+this.price+"\nDown Payment "+this.amountPaid+ "\n");
+        return response.toString();
+    }
 
     private void button1ActionPerformed(ActionEvent e) {
         // TODO add your code here

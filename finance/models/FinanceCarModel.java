@@ -30,7 +30,12 @@ public class FinanceCarModel
 	  this.color = color;
 	}
 	public int getPrice()	 {return this.price;}
-	public void setPrice(int price) throws IllegalArgumentException	
+
+    public int getAmount_paid() {
+        return amount_paid;
+    }
+
+    public void setPrice(int price) throws IllegalArgumentException
   	{
 	  if (price < 0) {
 		  throw new IllegalArgumentException("Sorry, price must be a positive number!");
