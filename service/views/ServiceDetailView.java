@@ -185,6 +185,7 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
         );
 
         pack();
+        this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 //public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
     private void save_appointmentActionPerformed(java.awt.event.ActionEvent evt) 

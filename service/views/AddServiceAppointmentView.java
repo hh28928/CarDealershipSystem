@@ -195,6 +195,7 @@ public class AddServiceAppointmentView extends javax.swing.JFrame implements Vie
         );
 
         pack();
+        this.setLocationRelativeTo(null);
     }// </editor-fold>                        
 
     //public CarModel(String vin, String make, String model, String color)
