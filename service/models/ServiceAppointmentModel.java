@@ -44,7 +44,22 @@ public void updateEmail(String email)
 
 public String getEmail()
 {
-  return email;
+        return email;
+}
+
+public String toString()
+{
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        sb.append(date);
+        sb.append("]  ");
+        sb.append(email);
+        sb.append(" (");
+        sb.append(c_model.getMake());
+        sb.append("  ");
+        sb.append(c_model.getModel());
+        sb.append(")");
+        return sb.toString();
 }
 
 }

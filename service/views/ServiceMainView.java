@@ -1,15 +1,19 @@
 package service.views;
 import service.viewmodels.ServiceViewModel;
 import inventory.views.View;
+import service.models.ServiceAppointmentModel;
+import java.util.HashSet;
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
     private ServiceViewModel viewModel;
+    private HashSet<ServiceAppointmentModel> appointments;
     
     /**
      * Creates new form ServiceMainView
      */
     public ServiceMainView(ServiceViewModel svm) {
         viewModel = svm;
+        appointments = svm.loadServiceAppointments();
         initComponents();
         this.render();
     }                        
@@ -23,10 +27,15 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
         appointment_list = new java.awt.List();
         exit_button = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Service Appointments");
 
         ServiceMainViewPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Appointments"));
+
+        for(ServiceAppointmentModel appt : appointments)
+        {
+          appointment_list.add(appt.toString());
+        }
 
         add_appointment_button.setText("Add");
         add_appointment_button.addActionListener(new java.awt.event.ActionListener() {

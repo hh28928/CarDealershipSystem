@@ -73,8 +73,17 @@ public void deleteAppointment(String email, LocalDate date)
   System.out.println("Appointment not found.");
 }
 
-private Set<ServiceAppointmentModel> loadServiceAppointments()
+
+//public CarModel(String vin, String make, String model, String color) 
+//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
+public HashSet<ServiceAppointmentModel> loadServiceAppointments()
 {
+  CarModel testCar = new CarModel("999","testmake","testmodel","red");
+  for(int i = 0; i<5; i++)
+  {
+    appointments.add(new ServiceAppointmentModel(testCar,"TestAppointment #" + Integer.toString(i), LocalDate.now(), "Customer #" + Integer.toString(i)));
+  }
+  
   return appointments;
 } 
 
