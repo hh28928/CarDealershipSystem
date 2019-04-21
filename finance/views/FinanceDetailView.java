@@ -36,7 +36,7 @@ public class FinanceDetailView extends JFrame {
         this.setVisible(true);
         StringBuilder response = new StringBuilder(financed_cars.size() + "Financed Car\n");
         CarModel tempCar = car.getCar();
-        response.append("Car Vin: " + tempCar.getVin() +  "\nCar Make " + tempCar.getMake()+"\nCar Model "+ tempCar.getModel()+"\nCar Color "+ tempCar.getColor()+"\nCar Price "
+        response.append("Car Vin: " + tempCar.getVIN() +  "\nCar Make " + tempCar.getMake()+"\nCar Model "+ tempCar.getModel()+"\nCar Color "+ tempCar.getColor()+"\nCar Price "
         + car.getPrice()+"\nDown Payment "+car.getAmount_paid()+ "\n");
         return response.toString();
     }
@@ -67,14 +67,6 @@ public class FinanceDetailView extends JFrame {
         label1 = new JLabel();
         buttonBar = new JPanel();
         okButton = new JButton();
-        CarModel tempCar = car.getCar();
-        car_vin.setText(tempCar.getVin());
-        car_make.setText(tempCar.getMake());
-        car_color.setText(tempCar.getColor());
-        car_model.setText(tempCar.getModel());
-        car_price.setText(this.car.getPrice());
-        amount_paid.setText(this.car.getAmount_paid());
-
 
         //======== this ========
         Container contentPane = getContentPane();
@@ -229,11 +221,7 @@ public class FinanceDetailView extends JFrame {
                 //---- okButton ----
                 okButton.setText("Back");
                 okButton.setPreferredSize(new Dimension(250, 48));
-                okButton.addActionListener(new ActionListener() {
-                    public void actionPerformed(ActionEvent e) {
-                        okButtonActionPerformed(e);
-                    }
-                });
+                okButton.addActionListener(e -> okButtonActionPerformed(e));
                 buttonBar.add(okButton, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                     new Insets(0, 0, 0, 0), 0, 0));

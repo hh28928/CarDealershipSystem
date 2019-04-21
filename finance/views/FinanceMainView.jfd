@@ -1,0 +1,127 @@
+JFDML JFormDesigner: "6.0.6.2.195" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "this"
+			"background": new java.awt.Color( 0, 225, 150, 255 )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "dialogPane"
+				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 4
+					"$rowCount": 6
+				} ) {
+					name: "contentPanel"
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label2"
+						"text": "Interest Rates"
+						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label3"
+						"text": "4.3% for Most Customers"
+						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label4"
+						"text": "Down Payment "
+						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"row": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label5"
+						"text": "5% of total Car Value Minimum"
+						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+						"row": 1
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label6"
+						"text": "Credit Score Low ?"
+						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"row": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label8"
+						"text": "Don't Worry, No Credit Score Needed"
+						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+						"row": 2
+					} )
+					add( new FormComponent( "javax.swing.JLabel" ) {
+						name: "label7"
+						"text": "Already Financed Find Vehicle by Entering VIN"
+						"font": new java.awt.Font( "Segoe UI", 0, 36 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"row": 3
+					} )
+					add( new FormComponent( "javax.swing.JTextField" ) {
+						name: "vin"
+						"preferredSize": new java.awt.Dimension( 650, 48 )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 1
+						"row": 3
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+					"$columnCount": 5
+					"$rowCount": 2
+				} ) {
+					name: "panel1"
+					"preferredSize": new java.awt.Dimension( 250, 68 )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "button1"
+						"text": "Back"
+						"preferredSize": new java.awt.Dimension( 150, 48 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"row": 1
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "new_finance"
+						"text": "Finance New Car"
+						"preferredSize": new java.awt.Dimension( 150, 48 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "new_financeActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 2
+						"row": 1
+					} )
+					add( new FormComponent( "javax.swing.JButton" ) {
+						name: "detailed_view"
+						"text": "Detailed View"
+						"preferredSize": new java.awt.Dimension( 150, 48 )
+						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "detailed_viewActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+						"column": 4
+						"row": 1
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "South"
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Financing"
+					"font": new java.awt.Font( "Segoe UI", 1, 48 )
+					"horizontalAlignment": 0
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "North"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 25, 5 )
+			"size": new java.awt.Dimension( 715, 615 )
+		} )
+	}
+}
