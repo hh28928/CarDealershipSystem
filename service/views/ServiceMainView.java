@@ -6,6 +6,7 @@ import java.util.HashSet;
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
     private ServiceViewModel viewModel;
+    private ServiceDetailView detail_view;
     private HashSet<ServiceAppointmentModel> appointments;
     
     /**
@@ -14,9 +15,7 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
     public ServiceMainView(ServiceViewModel svm) {
         viewModel = svm;
         appointments = svm.loadServiceAppointments();
-        initComponents();
-        this.render();
-    }                        
+      }                        
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -150,8 +149,8 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
             break;
           }
         }
-        viewModel.switchView(new ServiceDetailView(chosenAppt));
-        
+        detail_view = new ServiceDetailView(chosenAppt,viewModel,this);
+        viewModel.switchView(detail_view);
     }                                                         
 
     private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
@@ -165,6 +164,7 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
     
     public String render()
     {
+      initComponents();
       this.setVisible(true);
       return "ServiceMainView Rendered";
     }

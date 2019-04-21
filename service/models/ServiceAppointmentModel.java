@@ -44,6 +44,11 @@ public void updateComments(String comments)
         this.comments = comments;
 }
 
+public String getComments()
+{
+        return comments;  
+}
+
 public void updateEmail(String email)
 {
         this.email = email;

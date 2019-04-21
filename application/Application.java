@@ -13,7 +13,7 @@ import service.viewmodels.ServiceViewModel;
 import javax.swing.*;
 import java.awt.*;
 import java.util.regex.*;
-
+import java.time.*;
 
 class Application extends javax.swing.JFrame implements Publisher {
 	
@@ -25,6 +25,16 @@ class Application extends javax.swing.JFrame implements Publisher {
 		broker = new MessageBroker();
 		//init Service system
 		svm = new ServiceViewModel(broker);
+
+  //public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
+	//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
+		  //Test code to populate the menu wiht fake Appointments
+		  for(int i = 0; i<5; i++)
+		  {
+		    svm.addAppointment("Customer email #" + Integer.toString(i),"999","testmake","testmodel","red",LocalDate.now(),"testComment",i);
+		  }
+		  //Test code to populate the menu wiht fake Appointments
+		
 		//init the widgets for the application window
 		initComponents();
 		
@@ -319,6 +329,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 	
 	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		ServiceMainView service = new ServiceMainView(svm);
+		svm.switchView(service);
 		System.out.println("GOING TO SERVICE SECTION");
 	}                                           
 
