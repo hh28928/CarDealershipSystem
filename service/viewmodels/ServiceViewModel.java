@@ -43,17 +43,14 @@ public void addAppointment(String email, String vin, String make, String model, 
   appointments.add(appt);
 }
 
-public void updateAppointment(String email, LocalDate date, String comments)
+public void updateAppointment(int id, ServiceAppointmentModel app)
 {
   for(ServiceAppointmentModel appt : appointments)
   {
-    if(appt.getEmail().equals(email))
+    if(appt.getID() == id)
     {
-      ServiceAppointmentModel temp = appt;
       appointments.remove(appt);
-      temp.updateDate(date);
-      temp.updateComments(comments);
-      appointments.add(temp);
+      appointments.add(app);
       return;
     }
   }
@@ -78,17 +75,6 @@ public void deleteAppointment(String email, LocalDate date)
 //public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
 public LinkedHashSet<ServiceAppointmentModel> loadServiceAppointments()
 {
-  
-  
-  //Test code to populate the menu wiht fake Appointments
-  CarModel testCar = new CarModel("999","testmake","testmodel","red");
-  for(int i = 0; i<5; i++)
-  {
-    appointments.add(new ServiceAppointmentModel(testCar,"TestAppointment #" + Integer.toString(i), LocalDate.now(), "Customer #" + Integer.toString(i), i));
-  }
-  //Test code to populate the menu wiht fake Appointments
-  
-  
   return appointments;
 } 
 

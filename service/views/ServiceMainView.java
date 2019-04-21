@@ -3,9 +3,11 @@ import service.viewmodels.ServiceViewModel;
 import inventory.views.View;
 import service.models.ServiceAppointmentModel;
 import java.util.HashSet;
+import java.util.regex.*;
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
     private ServiceViewModel viewModel;
+    private ServiceDetailView detail_view;
     private HashSet<ServiceAppointmentModel> appointments;
     
     /**
@@ -14,9 +16,7 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
     public ServiceMainView(ServiceViewModel svm) {
         viewModel = svm;
         appointments = svm.loadServiceAppointments();
-        initComponents();
-        this.render();
-    }                        
+      }                        
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
@@ -139,8 +139,6 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
         }
         int selected = Integer.parseInt(appointment_list.getSelectedItem().substring(1,2));
         
-        //System.out.println(selected);
-        
         ServiceAppointmentModel chosenAppt = null;
         for(ServiceAppointmentModel appt : appointments)
         {
@@ -150,13 +148,36 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
             break;
           }
         }
-        viewModel.switchView(new ServiceDetailView(chosenAppt));
-        
+        detail_view = new ServiceDetailView(chosenAppt,viewModel,this);
+        viewModel.switchView(detail_view);
     }                                                         
 
-    private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          
-        // TODO add your handling code here:
-    }                                                         
+    private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                                          
+      if(appointment_list.getSelectedObjects().length == 0)
+      {
+        return;
+      }
+      
+      Pattern p = Pattern.compile("(\\([0-9]+\\))");
+      Matcher m = p.matcher(appointment_list.getSelectedItem()); 
+      m.find();
+      String temp = m.group(1);
+      temp = temp.substring(1,temp.length()-1);
+      
+      int selected = Integer.parseInt(temp);
+    
+      for(ServiceAppointmentModel appt : appointments)
+      {
+        if(appt.getID() == selected)
+        {
+          appointments.remove(appt);
+          break;
+        }
+      }
+      viewModel.switchView(new ServiceMainView(viewModel));
+      this.dispose();
+    }                                                        
 
     private void exit_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
@@ -165,6 +186,7 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
     
     public String render()
     {
+      initComponents();
       this.setVisible(true);
       return "ServiceMainView Rendered";
     }

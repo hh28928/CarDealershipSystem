@@ -1,1 +1,1 @@
-find -name "*Service*.java" > sources.txt; javac @sources.txt; rm sources.txt;
+./clean.sh;find -name "*Service*.java" > sources.txt; javac @sources.txt; rm sources.txt;

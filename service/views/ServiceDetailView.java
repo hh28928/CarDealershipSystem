@@ -1,15 +1,21 @@
 package service.views;
 import inventory.views.View;
 import service.models.ServiceAppointmentModel;
+import service.viewmodels.ServiceViewModel;
+import inventory.models.CarModel;
+import java.time.*;
 
 public class ServiceDetailView extends javax.swing.JFrame implements View{
     
     private ServiceAppointmentModel currentAppointment;
+    private ServiceViewModel viewModel;
+    private ServiceMainView main_view;
     
     /** Creates new form ServiceDetailView */
-    public ServiceDetailView(ServiceAppointmentModel appt) {
+    public ServiceDetailView(ServiceAppointmentModel appt, ServiceViewModel svm, ServiceMainView main_view) {
         currentAppointment = appt;
-        initComponents();
+        viewModel = svm;
+        this.main_view = main_view;
     }
     
     /** This method is called from within the constructor to
@@ -48,26 +54,32 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
 
         date_label.setText("Date:");
 
-        appointment_customer_email.setText("2");
+        appointment_customer_email.setText(currentAppointment.getEmail());
 
         jLabel8.setText("/");
 
-        appointment_month_textbox.setText("2");
+        appointment_month_textbox.setText(Integer.toString(currentAppointment.getDate().getMonthValue()));
 
-        appointment_day_textbox.setText("2");
+        appointment_day_textbox.setText(Integer.toString(currentAppointment.getDate().getDayOfMonth()));
 
         jLabel11.setText("/");
 
-        appointment_year_textbox.setText("2");
+        appointment_year_textbox.setText(Integer.toString(currentAppointment.getDate().getYear()));
 
         jLabel12.setText("Vin #:");
+        vin_label.setText(currentAppointment.getCar().getVIN());
 
         jLabel13.setText("Make:");
+        make_label.setText(currentAppointment.getCar().getMake());
 
         jLabel14.setText("Model:");
+        model_label.setText(currentAppointment.getCar().getModel());
 
         jLabel15.setText("Color:");
+        color_label.setText(currentAppointment.getCar().getColor());
 
+        comment_text_area.setText(currentAppointment.getComments());
+        
         javax.swing.GroupLayout edit_service_appointment_panelLayout = new javax.swing.GroupLayout(edit_service_appointment_panel);
         edit_service_appointment_panel.setLayout(edit_service_appointment_panelLayout);
         edit_service_appointment_panelLayout.setHorizontalGroup(
@@ -119,9 +131,9 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
                 .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customer_email_label)
                     .addComponent(appointment_customer_email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                 .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(edit_service_appointment_panelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 15, Short.MAX_VALUE)
                         .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(appointment_month_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(appointment_day_textbox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,21 +149,16 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
                         .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(make_label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(model_label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(edit_service_appointment_panelLayout.createSequentialGroup()
-                                .addComponent(jLabel15)
-                                .addGap(0, 14, Short.MAX_VALUE))
-                            .addComponent(color_label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(59, 59, 59))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, edit_service_appointment_panelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(comment_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(edit_service_appointment_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(color_label, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(comment_text_area, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         save_appointment.setText("Save");
@@ -179,20 +186,37 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
                 .addContainerGap()
                 .addComponent(edit_service_appointment_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(save_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                .addComponent(save_appointment, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>                        
-
-    private void save_appointmentActionPerformed(java.awt.event.ActionEvent evt) {                                                 
-        // TODO add your handling code here:
+//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
+    private void save_appointmentActionPerformed(java.awt.event.ActionEvent evt) 
+    {                                                 
+        String email = appointment_customer_email.getText();
+        int month = Integer.parseInt(appointment_month_textbox.getText());
+        int day = Integer.parseInt(appointment_day_textbox.getText());
+        int year = Integer.parseInt(appointment_year_textbox.getText());
+        LocalDate date = LocalDate.of(year,month,day);
+        CarModel car = currentAppointment.getCar();
+        int id = currentAppointment.getID();
+        String comments = comment_text_area.getText();
+        
+        ServiceAppointmentModel edited_appointment = new ServiceAppointmentModel(car,comments,date,email,id);
+        viewModel.updateAppointment(id, edited_appointment);
+        
+        ServiceMainView updated_main_view = new ServiceMainView(viewModel);
+        main_view.dispose();
+        viewModel.switchView(updated_main_view);
         this.setVisible(false);
+        this.dispose();
     }                                                
     
     public String render()
     {
+      initComponents();
       this.setVisible(true);
       return "ServiceDetailView rendered.";
     }

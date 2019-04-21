@@ -9,6 +9,7 @@ protected String comments;
 protected CarModel c_model;
 protected LocalDate date;
 protected String email;
+protected static int uniqueID;
 
 public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
 {
@@ -42,6 +43,11 @@ public void updateDate(LocalDate date)
 public void updateComments(String comments)
 {
         this.comments = comments;
+}
+
+public String getComments()
+{
+        return comments;  
 }
 
 public void updateEmail(String email)
