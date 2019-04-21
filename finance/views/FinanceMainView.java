@@ -27,7 +27,7 @@ public class FinanceMainView extends javax.swing.JFrame implements View
     public String render() {
 
         this.setVisible(true);
-        StringBuilder response = new StringBuilder(financed_cars.size() + " CARS IN CURRENT INVENTORY:\nRESULT #\t VIN\n");
+        StringBuilder response = new StringBuilder(financed_cars.size() + " CARS CURRENTLY BEING FINANCED:\nRESULT #\t VIN\n");
 
         int counter = 1;
         for (FinanceCarModel car : financed_cars) {
