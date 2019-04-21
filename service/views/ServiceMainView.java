@@ -137,18 +137,21 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
         {
           return;
         }
-        String selected = appointment_list.getSelectedItem().substring(1,2);
+        int selected = Integer.parseInt(appointment_list.getSelectedItem().substring(1,2));
         
-        System.out.println(selected);
-        return;
-        /*
+        //System.out.println(selected);
+        
         ServiceAppointmentModel chosenAppt = null;
         for(ServiceAppointmentModel appt : appointments)
         {
-          
+          if(appt.getID() == selected)
+          {
+            chosenAppt = appt;
+            break;
+          }
         }
         viewModel.switchView(new ServiceDetailView(chosenAppt));
-        */
+        
     }                                                         
 
     private void delete_appointment_buttonActionPerformed(java.awt.event.ActionEvent evt) {                                                          

@@ -78,11 +78,16 @@ public void deleteAppointment(String email, LocalDate date)
 //public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email)
 public LinkedHashSet<ServiceAppointmentModel> loadServiceAppointments()
 {
+  
+  
+  //Test code to populate the menu wiht fake Appointments
   CarModel testCar = new CarModel("999","testmake","testmodel","red");
   for(int i = 0; i<5; i++)
   {
     appointments.add(new ServiceAppointmentModel(testCar,"TestAppointment #" + Integer.toString(i), LocalDate.now(), "Customer #" + Integer.toString(i), i));
   }
+  //Test code to populate the menu wiht fake Appointments
+  
   
   return appointments;
 } 

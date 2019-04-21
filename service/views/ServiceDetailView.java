@@ -60,7 +60,7 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
 
         appointment_year_textbox.setText("2");
 
-        jLabel12.setText("Vin #");
+        jLabel12.setText("Vin #:");
 
         jLabel13.setText("Make:");
 
@@ -188,6 +188,7 @@ public class ServiceDetailView extends javax.swing.JFrame implements View{
 
     private void save_appointmentActionPerformed(java.awt.event.ActionEvent evt) {                                                 
         // TODO add your handling code here:
+        this.setVisible(false);
     }                                                
     
     public String render()
