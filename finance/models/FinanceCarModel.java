@@ -12,13 +12,15 @@ public class FinanceCarModel
 	protected int amount_paid;
 	protected List<PaymentModel> payments;
     protected CarModel car;
-	public FinanceCarModel(CarModel car, int price) throws IllegalArgumentException
+	public FinanceCarModel(CarModel car, int price, int amount_paid) throws IllegalArgumentException
 	{
 	  this.car = car;
-	  if (price < 0){
-		  throw new IllegalArgumentException("Sorry, price must be a positive number!");
+
+	  if (price < 0 || amount_paid < 0){
+		  throw new IllegalArgumentException("Sorry, price and amount paid must be a positive number!");
 	  }
 	  this.price = price;
+	  this.amount_paid = amount_paid;
 	  this.payments = new ArrayList<PaymentModel>(); 
 	}
 
@@ -28,7 +30,12 @@ public class FinanceCarModel
 	  this.color = color;
 	}
 	public int getPrice()	 {return this.price;}
-	public void setPrice(int price) throws IllegalArgumentException	
+
+    public int getAmount_paid() {
+        return amount_paid;
+    }
+
+    public void setPrice(int price) throws IllegalArgumentException
   	{
 	  if (price < 0) {
 		  throw new IllegalArgumentException("Sorry, price must be a positive number!");

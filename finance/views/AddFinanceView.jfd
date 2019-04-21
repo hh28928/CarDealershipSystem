@@ -1,0 +1,143 @@
+JFDML JFormDesigner: "6.0.6.2.195" Java: "1.8.0_152-release" encoding: "UTF-8"
+
+new FormModel {
+	contentType: "form/swing"
+	root: new FormRoot {
+		add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+			name: "panel1"
+			add( new FormComponent( "javax.swing.JTextArea" ) {
+				name: "textArea1"
+				"text": "             Add A Car to Be Financed"
+				"font": new java.awt.Font( "Monospaced", 0, 48 )
+				"background": new com.jformdesigner.model.SwingColor( "Menu.selectionBackground" )
+				"caretColor": new java.awt.Color( 187, 23, 58, 255 )
+				"foreground": sfield java.awt.SystemColor desktop
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "North"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "button1"
+				"text": "Add Car"
+				"minimumSize": new java.awt.Dimension( 121, 100 )
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "South"
+			} )
+			add( new FormComponent( "javax.swing.JButton" ) {
+				name: "backButton"
+				"text": "Back"
+				addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "backButtonActionPerformed", true ) )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "West"
+			} )
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class com.intellij.uiDesigner.core.GridLayoutManager ) {
+				"$columnCount": 6
+				"$rowCount": 8
+				"vGap": 0
+				"hGap": 0
+			} ) {
+				name: "panel3"
+				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label1"
+					"text": "Car Vin Number:"
+					"font": new java.awt.Font( "Segoe UI", 0, 40 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "CarVin"
+					"background": &Color0 new java.awt.Color( 244, 244, 244, 255 )
+					"border": &SoftBevelBorder0 new javax.swing.border.SoftBevelBorder( 1, null, null, null, null )
+					"minimumSize": &Dimension0 new java.awt.Dimension( 300, 47 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label2"
+					"text": "Car Make:"
+					"font": new java.awt.Font( "Segoe UI", 0, 40 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 1
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "CarMake"
+					"background": #Color0
+					"border": #SoftBevelBorder0
+					"minimumSize": #Dimension0
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 1
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label3"
+					"text": "Car Model:"
+					"font": new java.awt.Font( "Segoe UI", 0, 40 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label4"
+					"text": "Car Color:"
+					"font": new java.awt.Font( "Segoe UI", 0, 40 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 2
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "CarColor"
+					"background": #Color0
+					"border": #SoftBevelBorder0
+					"minimumSize": #Dimension0
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 2
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "Car_Model"
+					"background": #Color0
+					"border": #SoftBevelBorder0
+					"minimumSize": #Dimension0
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 3
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label5"
+					"text": "Car Price:"
+					"font": new java.awt.Font( "Segoe UI", 0, 40 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 4
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "CarPrice"
+					"background": #Color0
+					"border": #SoftBevelBorder0
+					"minimumSize": #Dimension0
+					"cursor": new java.awt.Cursor( 2 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 4
+				} )
+				add( new FormComponent( "javax.swing.JLabel" ) {
+					name: "label6"
+					"text": "Down Payment:"
+					"font": new java.awt.Font( "Segoe UI", 0, 40 )
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"row": 5
+				} )
+				add( new FormComponent( "javax.swing.JTextField" ) {
+					name: "DownPayment"
+					"background": #Color0
+					"border": #SoftBevelBorder0
+					"minimumSize": #Dimension0
+				}, new FormLayoutConstraints( class com.intellij.uiDesigner.core.GridConstraints ) {
+					"column": 1
+					"row": 5
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+		}, new FormLayoutConstraints( null ) {
+			"location": new java.awt.Point( 125, 100 )
+			"size": new java.awt.Dimension( 560, 460 )
+		} )
+	}
+}

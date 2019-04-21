@@ -14,7 +14,7 @@ public class FinanceViewModel implements View
     private View currentView;
     
     // list of current financed cars
-    Set<FinanceCarModel> financed_cars;
+    private Set<FinanceCarModel> financed_cars;
     
     // constructor
     public FinanceViewModel()
@@ -22,7 +22,11 @@ public class FinanceViewModel implements View
         this.financed_cars = loadFinancedCars();
         currentView = new FinanceMainView(this,financed_cars);
     }
-    
+
+    public Set<FinanceCarModel> getFinanced_cars() {
+        return financed_cars;
+    }
+
     // switches the view to a different finance section view
     public void switchView (View view)
     {
@@ -30,11 +34,11 @@ public class FinanceViewModel implements View
         renderView();
     }
     
-    public void addFinancedCar(CarModel car,int price) throws IllegalArgumentException
+    public void addFinancedCar(CarModel car,int price, int amount_paid) throws IllegalArgumentException
     {
         
         try{
-            FinanceCarModel new_car = new FinanceCarModel(car,price);
+            FinanceCarModel new_car = new FinanceCarModel(car,price,amount_paid);
             this.financed_cars.add(new_car);
         }
         catch (Exception e)
