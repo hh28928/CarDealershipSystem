@@ -7,6 +7,9 @@ import mailing.messages.Message;
 import mailing.subscribers.EmailAccount;
 import mailing.publishers.Publisher;
 
+import service.views.ServiceMainView;
+import service.viewmodels.ServiceViewModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.regex.*;
@@ -15,11 +18,13 @@ import java.util.regex.*;
 class Application extends javax.swing.JFrame implements Publisher {
 	
 	private MessageBroker broker;
+	private ServiceViewModel svm;
 	
 	public void run() {
 		//init the message broker system
 		broker = new MessageBroker();
-		
+		//init Service system
+		svm = new ServiceViewModel(broker);
 		//init the widgets for the application window
 		initComponents();
 		
@@ -313,6 +318,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 	}     
 	
 	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+		ServiceMainView service = new ServiceMainView(svm);
 		System.out.println("GOING TO SERVICE SECTION");
 	}                                           
 

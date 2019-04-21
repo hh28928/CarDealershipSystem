@@ -1,1 +1,1 @@
-find -name "*.java" > sources.txt; javac @sources.txt; rm sources.txt;
+find -name "*Service*.java" > sources.txt; javac @sources.txt; rm sources.txt;

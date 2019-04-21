@@ -12,7 +12,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class FinanceMainView extends javax.swing.JFrame implements View () 
+public class FinanceMainView extends javax.swing.JFrame implements View 
 {
     private Set<FinanceCarModel> financed_cars;
     private FinanceViewModel viewModel;

@@ -1,5 +1,5 @@
 package service.models;
-import inventory.models.*;
+import inventory.models.CarModel;
 import java.time.*;
 
 public class ServiceAppointmentModel
@@ -32,7 +32,7 @@ public void updateDate(LocalDate date)
         this.date = date;
 }
 
-public void udpateComments(String comments)
+public void updateComments(String comments)
 {
         this.comments = comments;
 }
@@ -40,6 +40,11 @@ public void udpateComments(String comments)
 public void updateEmail(String email)
 {
         this.email = email;
+}
+
+public String getEmail()
+{
+  return email;
 }
 
 }
