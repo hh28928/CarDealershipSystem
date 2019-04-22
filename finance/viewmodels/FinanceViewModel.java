@@ -72,7 +72,7 @@ public class FinanceViewModel
         }
     }
     
-    private Set<FinanceCarModel> loadFinancedCars()
+    public Set<FinanceCarModel> loadFinancedCars()
     {
         Set<FinanceCarModel> cars = new HashSet<FinanceCarModel>();
         try(BufferedReader br = new BufferedReader(new FileReader(this.data_location))) {

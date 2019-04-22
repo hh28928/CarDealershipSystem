@@ -1,5 +1,6 @@
 package application;
 
+import finance.models.FinanceCarModel;
 import inventory.presenters.*;
 import mailing.brokers.MessageBroker;
 
@@ -17,6 +18,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.regex.*;
 import java.util.Scanner;
+import java.util.Set;
 import java.time.*;
 import java.io.*;
 
@@ -24,12 +26,15 @@ class Application extends javax.swing.JFrame implements Publisher {
 	
 	private MessageBroker broker;
 	private ServiceViewModel svm;
-	
+	private FinanceViewModel fvm;
+	private Set<FinanceCarModel> financed_cars;
 	public void run() {
 		//init the message broker system
 		broker = new MessageBroker();
 		//init Service system
 		svm = new ServiceViewModel(broker);
+		//init Finance system
+		fvm = new FinanceViewModel();
 
   //public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
 	//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
@@ -344,9 +349,10 @@ class Application extends javax.swing.JFrame implements Publisher {
 	}                                        
 
 	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-		//System.out.println("GOING TO FINANCE SECTION");	
-		FinanceViewModel fvm = new FinanceViewModel();
-		svm.switchView(fvm);
+		//System.out.println("GOING TO FINANCE SECTION");
+		financed_cars = fvm.loadFinancedCars();
+		FinanceMainView finance = new FinanceMainView(fvm,financed_cars);
+		fvm.switchView(finance);
 	}     
 	
 	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
