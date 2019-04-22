@@ -346,6 +346,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		//System.out.println("GOING TO FINANCE SECTION");	
 		FinanceViewModel fvm = new FinanceViewModel();
+		svm.switchView(fvm);
 	}     
 	
 	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
