@@ -113,42 +113,42 @@ public class FinanceMainView extends javax.swing.JFrame implements View
 
                 //---- label2 ----
                 label2.setText("Interest Rates");
-                label2.setFont(new Font("Segoe UI", Font.PLAIN, 48));
+                label2.setFont(new Font("Segoe UI", Font.PLAIN, 36));
                 contentPanel.add(label2, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
                     GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 25, 0), 0, 0));
 
                 //---- label3 ----
                 label3.setText("4.3% for Most Customers");
-                label3.setFont(new Font("Segoe UI", Font.PLAIN, 48));
+                label3.setFont(new Font("Segoe UI", Font.PLAIN, 36));
                 contentPanel.add(label3, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
                     GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 25, 0), 0, 0));
 
                 //---- label4 ----
                 label4.setText("Down Payment ");
-                label4.setFont(new Font("Segoe UI", Font.PLAIN, 48));
+                label4.setFont(new Font("Segoe UI", Font.PLAIN, 36));
                 contentPanel.add(label4, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
                     GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 25, 0), 0, 0));
 
                 //---- label5 ----
                 label5.setText("5% of total Car Value Minimum");
-                label5.setFont(new Font("Segoe UI", Font.PLAIN, 48));
+                label5.setFont(new Font("Segoe UI", Font.PLAIN, 36));
                 contentPanel.add(label5, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
                     GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 25, 0), 0, 0));
 
                 //---- label6 ----
                 label6.setText("Credit Score Low ?");
-                label6.setFont(new Font("Segoe UI", Font.PLAIN, 48));
+                label6.setFont(new Font("Segoe UI", Font.PLAIN, 36));
                 contentPanel.add(label6, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
                     GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 25, 0), 0, 0));
 
                 //---- label8 ----
                 label8.setText("Don't Worry, No Credit Score Needed");
-                label8.setFont(new Font("Segoe UI", Font.PLAIN, 48));
+                label8.setFont(new Font("Segoe UI", Font.PLAIN, 36));
                 contentPanel.add(label8, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
                     GridBagConstraints.WEST, GridBagConstraints.VERTICAL,
                     new Insets(0, 0, 25, 0), 0, 0));
