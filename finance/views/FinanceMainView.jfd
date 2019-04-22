@@ -14,7 +14,7 @@ new FormModel {
 					"$rowSpecs": "0, 0, 0, 0, 0, 0, 0, 0"
 					"$alignTop": true
 					"$alignLeft": true
-					"$vGap": 100
+					"$vGap": 25
 				} ) {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JLabel" ) {
