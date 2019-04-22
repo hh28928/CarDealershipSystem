@@ -1,9 +1,6 @@
 package finance.viewmodels;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.*;
 import inventory.views.View;
 import finance.views.FinanceMainView;
@@ -57,7 +54,7 @@ public class FinanceViewModel
             writer.close();
             this.financed_cars.add(new_car);
         }
-        catch (Exception e)
+        catch (FileNotFoundException e)
         {
             System.out.println("Sorry, but something was corupted with the information givin to addFinancedCar");
         }
