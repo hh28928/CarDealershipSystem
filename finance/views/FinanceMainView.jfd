@@ -73,8 +73,13 @@ new FormModel {
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
 				} )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.HorizontalLayout ) {
-					"gap": 150
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "0, 0, 0"
+					"$rowSpecs": "center:0:1.0"
+					"$alignTop": true
+					"$alignLeft": true
+					"$vGap": 100
+					"$hGap": 100
 				} ) {
 					name: "panel1"
 					"preferredSize": new java.awt.Dimension( 250, 68 )
@@ -84,18 +89,22 @@ new FormModel {
 						"preferredSize": new java.awt.Dimension( 150, 48 )
 						"margin": new java.awt.Insets( 2, 4, 3, 10 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "button1ActionPerformed", true ) )
-					} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "new_finance"
 						"text": "Finance New Car"
 						"preferredSize": new java.awt.Dimension( 250, 48 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "new_financeActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 1
 					} )
 					add( new FormComponent( "javax.swing.JButton" ) {
 						name: "detailed_view"
 						"text": "Detailed View"
 						"preferredSize": new java.awt.Dimension( 250, 48 )
 						addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "detailed_viewActionPerformed", true ) )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridx": 2
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "South"

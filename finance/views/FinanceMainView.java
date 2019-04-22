@@ -171,26 +171,36 @@ public class FinanceMainView extends javax.swing.JFrame implements View
             //======== panel1 ========
             {
                 panel1.setPreferredSize(new Dimension(250, 68));
-                panel1.setLayout(new HorizontalLayout(150));
+                panel1.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0, 0, 0};
+                ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {0, 0};
+                ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {1.0, 1.0E-4};
 
                 //---- button1 ----
                 button1.setText("Back");
                 button1.setPreferredSize(new Dimension(150, 48));
                 button1.setMargin(new Insets(2, 4, 3, 10));
                 button1.addActionListener(e -> button1ActionPerformed(e));
-                panel1.add(button1);
+                panel1.add(button1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 100), 0, 0));
 
                 //---- new_finance ----
                 new_finance.setText("Finance New Car");
                 new_finance.setPreferredSize(new Dimension(250, 48));
                 new_finance.addActionListener(e -> new_financeActionPerformed(e));
-                panel1.add(new_finance);
+                panel1.add(new_finance, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 100), 0, 0));
 
                 //---- detailed_view ----
                 detailed_view.setText("Detailed View");
                 detailed_view.setPreferredSize(new Dimension(250, 48));
                 detailed_view.addActionListener(e -> detailed_viewActionPerformed(e));
-                panel1.add(detailed_view);
+                panel1.add(detailed_view, new GridBagConstraints(2, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             dialogPane.add(panel1, BorderLayout.SOUTH);
 
