@@ -55,7 +55,7 @@ public class InventoryMainView extends javax.swing.JFrame implements View {
 
 	private void newItemButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		// TODO open the new item window here
-		View new_view = new AddInventoryView(renderItems, presenter);
+		View new_view = new AddInventoryView(presenter);
 		this.presenter.switchView(new_view);
 	}
 

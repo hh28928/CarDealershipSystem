@@ -4,10 +4,12 @@
 
 package inventory.views;
 
+import java.awt.event.ActionEvent;
 import java.util.Set;
 import java.awt.*;
 import javax.swing.*;
 import com.intellij.uiDesigner.core.*;
+import inventory.models.InventoryCarModel;
 import inventory.presenters.InventoryPresenter;
 
 /**
@@ -24,10 +26,15 @@ public class AddInventoryView extends JFrame implements View {
     private int price;
 
     public AddInventoryView(InventoryPresenter presenter) {
-
+        this.vin = null;
+        this.make = null;
+        this.model = null;
+        this.color = null;
+        this.price = 0;
         this.presenter = presenter;
         initComponents();
     }
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
@@ -42,6 +49,7 @@ public class AddInventoryView extends JFrame implements View {
         Color_textbox = new JTextField();
         Price_Lebal = new JLabel();
         Price_textbox = new JTextField();
+        back_button = new JButton();
         button_add = new JButton();
 
         //======== this ========
@@ -113,9 +121,17 @@ public class AddInventoryView extends JFrame implements View {
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             null, null, null));
 
+        //---- back_button ----
+        back_button.setText("Backl");
+        contentPane.add(back_button, new GridConstraints(6, 0, 1, 1,
+            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
+            null, null, null));
+
         //---- button_add ----
         button_add.setText("Add");
-        contentPane.add(button_add, new GridConstraints(6, 0, 1, 2,
+        contentPane.add(button_add, new GridConstraints(6, 1, 1, 2,
             GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
             GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
@@ -137,11 +153,39 @@ public class AddInventoryView extends JFrame implements View {
     private JTextField Color_textbox;
     private JLabel Price_Lebal;
     private JTextField Price_textbox;
+    private JButton back_button;
     private JButton button_add;
+        // JFormDesigner - End of variables declaration  //GEN-END:variables
+
+
+
+    private void back_buttonActionPerformed(ActionEvent e) {
+        View new_view = new InventoryMainView(this.presenter, this.presenter.getInventoryItems());
+        this.presenter.switchView(new_view);
+    }
+
+    private void button_addActionPerformed(ActionEvent e) {
+        try {
+            this.vin = VIN_textBox.getText();
+            this.make = Make_textbox.getText();
+            this.model = Model_textbox.getText();
+            this.color = Color_textbox.getText();
+            this.price = Integer.parseInt(Price_textbox.getText());
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "It seems that something went wrong.");
+            System.out.println("Error in adding a new vehicle to the inventory");
+        }
+        InventoryCarModel newcar = new InventoryCarModel(this.vin, this.make, this.model, this.color, this.price);
+        this.presenter.addInventoryItem(this.vin, this.make, this.model, this.color, this.price);
+        JOptionPane.showMessageDialog(null,"A new car is successfully added in the inventory system");
+    }
 
     @Override
     public String render() {
-        return null;
+        this.setVisible(true);
+        StringBuilder response = new StringBuilder("Financed Car\n");
+        response.append("Car Vin: " + this.vin +  "\nCar Make " +this.make+"\nCar Model "+this.model+"\nCar Color "+this.color+"\nCar Price "+this.price + "\n");
+        return response.toString();
     }
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
+
 }
