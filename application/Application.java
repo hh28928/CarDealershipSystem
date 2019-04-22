@@ -1,7 +1,9 @@
 package application;
 
 import finance.models.FinanceCarModel;
+import inventory.models.InventoryCarModel;
 import inventory.presenters.*;
+import inventory.views.InventoryMainView;
 import mailing.brokers.MessageBroker;
 
 import mailing.messages.Message;
@@ -23,11 +25,14 @@ import java.time.*;
 import java.io.*;
 
 class Application extends javax.swing.JFrame implements Publisher {
-	
+
 	private MessageBroker broker;
 	private ServiceViewModel svm;
 	private FinanceViewModel fvm;
 	private Set<FinanceCarModel> financed_cars;
+	private Set<InventoryCarModel> inventoryCarModels;
+	private InventoryPresenter Ip;
+
 	public void run() {
 		//init the message broker system
 		broker = new MessageBroker();
@@ -36,8 +41,8 @@ class Application extends javax.swing.JFrame implements Publisher {
 		//init Finance system
 		fvm = new FinanceViewModel();
 
-  //public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
-	//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
+		//public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
+		//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
 		try
 		{
 			Scanner in = new Scanner(new File("ServiceAppointments.csv"));
@@ -61,25 +66,25 @@ class Application extends javax.swing.JFrame implements Publisher {
 		{}
 		//init the widgets for the application window
 		initComponents();
-		
+
 		//set the window as visible
-		this.setVisible(true);	
-		
+		this.setVisible(true);
+
 	}
-	
+
 	public static void main(String[] args) {
-		
+
 		Application app = new Application();
 		app.run();
 	}
-	
+
 	@Override
 	public void publish(MessageBroker broker, Message message) {
 		this.broker.sendMessage(message);
 	}
-	
+
 	//initialize UI components
-	@SuppressWarnings("unchecked")                        
+	@SuppressWarnings("unchecked")
 	private void initComponents() {
 
 		systemLabel = new javax.swing.JLabel();
@@ -132,7 +137,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 				subscribeButtonActionPerformed(evt);
 			}
 		});
-		
+
 
 		topicLabel.setText("Topic:");
 
@@ -163,130 +168,130 @@ class Application extends javax.swing.JFrame implements Publisher {
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
 		layout.setHorizontalGroup(
-			layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
-			.addGroup(layout.createSequentialGroup()
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-					.addGroup(layout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(subscriptionSectionLabel))
-					.addGroup(layout.createSequentialGroup()
-						.addGap(17, 17, 17)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-							.addGroup(layout.createSequentialGroup()
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-									.addComponent(topicLabel)
-									.addComponent(emailLabel))
-								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-									.addComponent(subscriberField, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-									.addComponent(subscriberTopicField))
-								.addGap(38, 38, 38)
-								.addComponent(subscribeButton)
-								.addGap(9, 9, 9))
-							.addComponent(unsubscribeButton)
-							.addGroup(layout.createSequentialGroup()
-								.addComponent(sendButton)
-								.addGap(33, 33, 33))))
-					.addGroup(layout.createSequentialGroup()
-						.addGap(128, 128, 128)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-							.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(layout.createSequentialGroup()
-									.addGap(24, 24, 24)
-									.addComponent(inventoryButton))
-								.addGroup(layout.createSequentialGroup()
-									.addGap(8, 8, 8)
-									.addComponent(financeButton))
-								.addComponent(serviceButton))
-							.addComponent(systemLabel))))
-				.addContainerGap(87, Short.MAX_VALUE))
-			.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
 						.addGroup(layout.createSequentialGroup()
-							.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+										.addGroup(layout.createSequentialGroup()
+												.addContainerGap()
+												.addComponent(subscriptionSectionLabel))
+										.addGroup(layout.createSequentialGroup()
+												.addGap(17, 17, 17)
+												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+														.addGroup(layout.createSequentialGroup()
+																.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+																		.addComponent(topicLabel)
+																		.addComponent(emailLabel))
+																.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+																.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+																		.addComponent(subscriberField, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+																		.addComponent(subscriberTopicField))
+																.addGap(38, 38, 38)
+																.addComponent(subscribeButton)
+																.addGap(9, 9, 9))
+														.addComponent(unsubscribeButton)
+														.addGroup(layout.createSequentialGroup()
+																.addComponent(sendButton)
+																.addGap(33, 33, 33))))
+										.addGroup(layout.createSequentialGroup()
+												.addGap(128, 128, 128)
+												.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+														.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+																.addGroup(layout.createSequentialGroup()
+																		.addGap(24, 24, 24)
+																		.addComponent(inventoryButton))
+																.addGroup(layout.createSequentialGroup()
+																		.addGap(8, 8, 8)
+																		.addComponent(financeButton))
+																.addComponent(serviceButton))
+														.addComponent(systemLabel))))
+								.addContainerGap(87, Short.MAX_VALUE))
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 								.addGroup(layout.createSequentialGroup()
-									.addGap(17, 17, 17)
-									.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-										.addComponent(publishTopicLabel)
-										.addComponent(publishMessageLabel))
-									.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-									.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-										.addComponent(publishMessageField, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
-										.addComponent(publishTopicField)))
-								.addComponent(publishSectionLabel))
-							.addContainerGap(214, Short.MAX_VALUE))
-						.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-							.addComponent(jSeparator2)
-							.addContainerGap()))))
+										.addContainerGap()
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+												.addGroup(layout.createSequentialGroup()
+														.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+																.addGroup(layout.createSequentialGroup()
+																		.addGap(17, 17, 17)
+																		.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+																				.addComponent(publishTopicLabel)
+																				.addComponent(publishMessageLabel))
+																		.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+																		.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+																				.addComponent(publishMessageField, javax.swing.GroupLayout.DEFAULT_SIZE, 132, Short.MAX_VALUE)
+																				.addComponent(publishTopicField)))
+																.addComponent(publishSectionLabel))
+														.addContainerGap(214, Short.MAX_VALUE))
+												.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+														.addComponent(jSeparator2)
+														.addContainerGap()))))
 		);
 		layout.setVerticalGroup(
-			layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-			.addGroup(layout.createSequentialGroup()
-				.addGap(21, 21, 21)
-				.addComponent(systemLabel)
-				.addGap(18, 18, 18)
-				.addComponent(inventoryButton)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				.addComponent(financeButton)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				.addComponent(serviceButton)
-				.addGap(47, 47, 47)
-				.addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-				.addComponent(subscriptionSectionLabel)
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-					.addComponent(subscriberTopicField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-					.addComponent(topicLabel)
-					.addComponent(subscribeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-				.addGap(9, 9, 9)
-				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-					.addComponent(subscriberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-					.addComponent(emailLabel)
-					.addComponent(unsubscribeButton))
-				.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
-				.addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-				.addGap(63, 63, 63))
-			.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-					.addContainerGap(348, Short.MAX_VALUE)
-					.addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-					.addComponent(publishSectionLabel)
-					.addGap(18, 18, 18)
-					.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(publishTopicField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(publishTopicLabel))
-					.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-					.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-						.addComponent(publishMessageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-						.addComponent(publishMessageLabel))
-					.addGap(65, 65, 65)))
+				layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup()
+								.addGap(21, 21, 21)
+								.addComponent(systemLabel)
+								.addGap(18, 18, 18)
+								.addComponent(inventoryButton)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(financeButton)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(serviceButton)
+								.addGap(47, 47, 47)
+								.addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+								.addComponent(subscriptionSectionLabel)
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+										.addComponent(subscriberTopicField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(topicLabel)
+										.addComponent(subscribeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+								.addGap(9, 9, 9)
+								.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+										.addComponent(subscriberField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addComponent(emailLabel)
+										.addComponent(unsubscribeButton))
+								.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+								.addComponent(sendButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+								.addGap(63, 63, 63))
+						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+								.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+										.addContainerGap(348, Short.MAX_VALUE)
+										.addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addComponent(publishSectionLabel)
+										.addGap(18, 18, 18)
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+												.addComponent(publishTopicField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addComponent(publishTopicLabel))
+										.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+										.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+												.addComponent(publishMessageField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+												.addComponent(publishMessageLabel))
+										.addGap(65, 65, 65)))
 		);
 
 		pack();
 		this.setLocationRelativeTo(null);
-	}   
-	
+	}
+
 	private boolean validateSubscriptionFields() {
 		//validate topic
 		if (this.subscriberTopicField.getText().trim().isEmpty()) {
 			System.out.println("No topic provided, cannot subscribe.");
 			return false;
-		}  
+		}
 		//validate email address
 		if (!Pattern.compile("^(.+)@(.+)$").matcher(this.subscriberField.getText()).matches()) {
 			System.out.println("Invalid email address provided, cannot subscribe.");
 			return false;
-		} 
-		
-		return true;
-	}                  
+		}
 
-	private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {    
+		return true;
+	}
+
+	private void subscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//validation
 		if (!validateSubscriptionFields()) return;
 
@@ -294,75 +299,77 @@ class Application extends javax.swing.JFrame implements Publisher {
 		String emailAccount = this.subscriberField.getText().split("@")[0];
 		String emailServer = this.subscriberField.getText().split("@")[1];
 		String topic = this.subscriberTopicField.getText();
-		
+
 		//subscribe
 		EmailAccount email1 = new EmailAccount(emailAccount, emailServer, broker);
 		email1.subscribe(topic);
-		
+
 		//clear input fields
 		this.subscriberField.setText("");
 		this.subscriberTopicField.setText("");
-	}   
-	
-	private void unsubscribeButtonActionPerformed(java.awt.event.ActionEvent evt) { 
+	}
+
+	private void unsubscribeButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//validation
 		if (!validateSubscriptionFields()) return;
-		
+
 		//collect the fields
 		String emailAccount = this.subscriberField.getText().split("@")[0];
 		String emailServer = this.subscriberField.getText().split("@")[1];
 		String topic = this.subscriberTopicField.getText();
-		
+
 		//unsubscribe
 		EmailAccount email1 = new EmailAccount(emailAccount, emailServer, broker);
 		email1.unsubscribe(topic);
-		
+
 		//clear input fields
 		this.subscriberField.setText("");
 		this.subscriberTopicField.setText("");
-	}                                            
+	}
 
-	private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {   
+	private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//validate fields
 		if (this.publishTopicField.getText().trim().isEmpty()) {
 			System.out.println("No topic provided, cannot publish message.");
 			return;
-		}  
+		}
 		if (this.publishMessageField.getText().trim().isEmpty()) {
 			System.out.println("No message provided, cannot publish message.");
 			return;
-		}  
-		
-		
+		}
+
+
 		//broadcast the message
 		this.publish(this.broker, new Message(this.publishTopicField.getText(), this.publishMessageField.getText()));
-		
+
 		//clear input fields to this section when the message is sent
 		this.publishTopicField.setText("");
 		this.publishMessageField.setText("");
-	
-	}     
-	
-	private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {  
-		//open the inventory                                            
-		InventoryPresenter inventory = new InventoryPresenter(broker);
 
-	}                                        
+	}
 
-	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+	private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {
+		//open the inventory
+		inventoryCarModels = Ip.loadInventoryItems();
+		InventoryMainView inventoryMainView = new InventoryMainView(Ip, inventoryCarModels);
+		Ip.switchView(inventoryMainView);
+
+	}
+
+	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		//System.out.println("GOING TO FINANCE SECTION");
 		financed_cars = fvm.loadFinancedCars();
 		FinanceMainView finance = new FinanceMainView(fvm,financed_cars);
 		fvm.switchView(finance);
-	}     
-	
-	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
+	}
+
+	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {
 		ServiceMainView service = new ServiceMainView(svm);
 		svm.switchView(service);
 		//System.out.println("GOING TO SERVICE SECTION");
-	}                                           
+	}
 
-	
+
 	// UI variables                    
 	private javax.swing.JLabel emailLabel;
 	private javax.swing.JButton financeButton;
@@ -382,5 +389,5 @@ class Application extends javax.swing.JFrame implements Publisher {
 	private javax.swing.JLabel subscriptionSectionLabel;
 	private javax.swing.JLabel systemLabel;
 	private javax.swing.JLabel topicLabel;
-	private javax.swing.JButton unsubscribeButton;                
+	private javax.swing.JButton unsubscribeButton;
 }
