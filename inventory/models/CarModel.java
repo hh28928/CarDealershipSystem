@@ -17,4 +17,8 @@ public class CarModel {
 	public String getMake() { return this.make; }
 	public String getModel() { return this.model; }
 	public String getColor() { return this.color; }
+	
+	public void setColor(String color) {
+		this.color = color;
+	}
 }
