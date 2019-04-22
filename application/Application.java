@@ -10,6 +10,9 @@ import mailing.publishers.Publisher;
 import service.views.ServiceMainView;
 import service.viewmodels.ServiceViewModel;
 
+import finance.views.FinanceMainView;
+import finance.viewmodels.FinanceViewModel;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.regex.*;
@@ -341,13 +344,14 @@ class Application extends javax.swing.JFrame implements Publisher {
 	}                                        
 
 	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-		System.out.println("GOING TO FINANCE SECTION");	
+		//System.out.println("GOING TO FINANCE SECTION");	
+		FinanceViewModel fvm = new FinanceViewModel();
 	}     
 	
 	private void serviceButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		ServiceMainView service = new ServiceMainView(svm);
 		svm.switchView(service);
-		System.out.println("GOING TO SERVICE SECTION");
+		//System.out.println("GOING TO SERVICE SECTION");
 	}                                           
 
 	
