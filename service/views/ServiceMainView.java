@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.regex.*;
 import javax.swing.JOptionPane;
 import java.io.*;
+import java.awt.event.*;
 
 public class ServiceMainView extends javax.swing.JFrame implements View {
     
@@ -32,6 +33,33 @@ public class ServiceMainView extends javax.swing.JFrame implements View {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setTitle("Service Appointments");
+
+        //in the event you close the service menu with the red x, this is to save the appointments to disk.
+        WindowListener exitListener = new WindowAdapter() {
+
+          @Override
+          public void windowClosing(WindowEvent e)
+           {
+             StringBuilder sb = new StringBuilder();
+             for(ServiceAppointmentModel app : appointments)
+             {
+               sb.append(app.getCSV());
+               sb.append("\n");
+             } 
+             //System.out.println(sb.toString());
+             try
+             {
+               File file = new File("ServiceAppointments.csv");
+               FileWriter f = new FileWriter(file);
+               f.write(sb.toString());
+               f.close();
+             }
+             catch(Exception ex)
+             {}
+            }
+          };
+        this.addWindowListener(exitListener);
+
 
         ServiceMainViewPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Appointments"));
 
