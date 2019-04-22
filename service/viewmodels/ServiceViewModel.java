@@ -5,6 +5,7 @@ import java.util.*;
 import mailing.publishers.Publisher;
 import mailing.brokers.MessageBroker;
 import mailing.messages.Message;
+import mailing.subscribers.EmailAccount;
 import inventory.views.View;
 import service.models.ServiceAppointmentModel;
 
@@ -41,6 +42,10 @@ public void addAppointment(String email, String vin, String make, String model, 
   CarModel car = new CarModel(vin, make, model, color);
   ServiceAppointmentModel appt = new ServiceAppointmentModel(car, comments, date, email);
   appointments.add(appt);
+  String[] emailFields = email.split("@");
+  EmailAccount customerEmail = new EmailAccount(emailFields[0], emailFields[1], broker);
+  customerEmail.subscribe(car.getVIN());
+  publish(broker, new Message(car.getVIN(), "Your appointment for your " + car.getMake() + " " + car.getModel() + " with VIN " + car.getVIN() + " has been scheduled for " + date.toString()));
 }
 
 public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
