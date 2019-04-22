@@ -1,1 +1,1 @@
-./clean.sh;find -name "*.java" > sources.txt; javac @sources.txt; rm sources.txt;
+export CLASSPATH=$CLASSPATH:"$PWD/forms_rt-7.0.3.jar" ;./clean.sh;find -name "*.java" > sources.txt; javac @sources.txt; rm sources.txt;
