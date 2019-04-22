@@ -16,6 +16,7 @@ import java.awt.*;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import org.jdesktop.swingx.*;
 
 public class FinanceMainView extends javax.swing.JFrame implements View
 {
@@ -104,115 +105,72 @@ public class FinanceMainView extends javax.swing.JFrame implements View
 
             //======== contentPanel ========
             {
-                contentPanel.setLayout(new GridLayoutManager(6, 4, new Insets(0, 0, 0, 0), -1, -1));
+                contentPanel.setLayout(new VerticalLayout(100));
 
                 //---- label2 ----
                 label2.setText("Interest Rates");
                 label2.setFont(new Font("Segoe UI", Font.PLAIN, 48));
-                contentPanel.add(label2, new GridConstraints(0, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label2);
 
                 //---- label3 ----
                 label3.setText("4.3% for Most Customers");
                 label3.setFont(new Font("Segoe UI", Font.PLAIN, 48));
-                contentPanel.add(label3, new GridConstraints(0, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label3);
 
                 //---- label4 ----
                 label4.setText("Down Payment ");
                 label4.setFont(new Font("Segoe UI", Font.PLAIN, 48));
-                contentPanel.add(label4, new GridConstraints(1, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label4);
 
                 //---- label5 ----
                 label5.setText("5% of total Car Value Minimum");
                 label5.setFont(new Font("Segoe UI", Font.PLAIN, 48));
-                contentPanel.add(label5, new GridConstraints(1, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label5);
 
                 //---- label6 ----
                 label6.setText("Credit Score Low ?");
                 label6.setFont(new Font("Segoe UI", Font.PLAIN, 48));
-                contentPanel.add(label6, new GridConstraints(2, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label6);
 
                 //---- label8 ----
                 label8.setText("Don't Worry, No Credit Score Needed");
                 label8.setFont(new Font("Segoe UI", Font.PLAIN, 48));
-                contentPanel.add(label8, new GridConstraints(2, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label8);
 
                 //---- label7 ----
                 label7.setText("Already Financed Find Vehicle by Entering VIN");
                 label7.setFont(new Font("Segoe UI", Font.PLAIN, 36));
-                contentPanel.add(label7, new GridConstraints(3, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(label7);
 
                 //---- vin ----
                 vin.setPreferredSize(new Dimension(650, 48));
-                contentPanel.add(vin, new GridConstraints(3, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                contentPanel.add(vin);
             }
             dialogPane.add(contentPanel, BorderLayout.CENTER);
 
             //======== panel1 ========
             {
                 panel1.setPreferredSize(new Dimension(250, 68));
-                panel1.setLayout(new GridLayoutManager(2, 5, new Insets(0, 0, 0, 0), -1, -1));
+                panel1.setLayout(new HorizontalLayout(150));
 
                 //---- button1 ----
                 button1.setText("Back");
                 button1.setPreferredSize(new Dimension(150, 48));
+                button1.setMargin(new Insets(2, 4, 3, 10));
                 button1.addActionListener(e -> button1ActionPerformed(e));
-                panel1.add(button1, new GridConstraints(1, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel1.add(button1);
 
                 //---- new_finance ----
                 new_finance.setText("Finance New Car");
-                new_finance.setPreferredSize(new Dimension(150, 48));
+                new_finance.setPreferredSize(new Dimension(250, 48));
                 new_finance.addActionListener(e -> new_financeActionPerformed(e));
-                panel1.add(new_finance, new GridConstraints(1, 2, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel1.add(new_finance);
 
                 //---- detailed_view ----
                 detailed_view.setText("Detailed View");
-                detailed_view.setPreferredSize(new Dimension(150, 48));
+                detailed_view.setPreferredSize(new Dimension(250, 48));
                 detailed_view.addActionListener(e -> detailed_viewActionPerformed(e));
-                panel1.add(detailed_view, new GridConstraints(1, 4, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel1.add(detailed_view);
             }
             dialogPane.add(panel1, BorderLayout.SOUTH);
 

@@ -131,122 +131,108 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
             //======== panel3 ========
             {
                 panel3.setBorder(null);
-                panel3.setLayout(new GridLayoutManager(8, 6, new Insets(0, 0, 0, 0), 0, 0));
+                panel3.setLayout(new GridBagLayout());
+                ((GridBagLayout)panel3.getLayout()).columnWidths = new int[] {0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout)panel3.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0, 0};
+                ((GridBagLayout)panel3.getLayout()).columnWeights = new double[] {0.01, 0.01, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
+                ((GridBagLayout)panel3.getLayout()).rowWeights = new double[] {0.01, 0.01, 0.01, 0.01, 0.01, 0.01, 0.0, 0.0, 1.0E-4};
 
                 //---- label1 ----
                 label1.setText("Car Vin Number:");
                 label1.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-                panel3.add(label1, new GridConstraints(0, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel3.add(label1, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- CarVin ----
                 CarVin.setBackground(new Color(244, 244, 244));
                 CarVin.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 CarVin.setMinimumSize(new Dimension(300, 47));
-                panel3.add(CarVin, new GridConstraints(0, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                CarVin.setPreferredSize(new Dimension(300, 47));
+                panel3.add(CarVin, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- label2 ----
                 label2.setText("Car Make:");
                 label2.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-                panel3.add(label2, new GridConstraints(1, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel3.add(label2, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- CarMake ----
                 CarMake.setBackground(new Color(244, 244, 244));
                 CarMake.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 CarMake.setMinimumSize(new Dimension(300, 47));
-                panel3.add(CarMake, new GridConstraints(1, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                CarMake.setPreferredSize(new Dimension(300, 47));
+                panel3.add(CarMake, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- label3 ----
                 label3.setText("Car Model:");
                 label3.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-                panel3.add(label3, new GridConstraints(3, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel3.add(label3, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- label4 ----
                 label4.setText("Car Color:");
                 label4.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-                panel3.add(label4, new GridConstraints(2, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel3.add(label4, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- CarColor ----
                 CarColor.setBackground(new Color(244, 244, 244));
                 CarColor.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 CarColor.setMinimumSize(new Dimension(300, 47));
-                panel3.add(CarColor, new GridConstraints(2, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                CarColor.setPreferredSize(new Dimension(300, 47));
+                panel3.add(CarColor, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- Car_Model ----
                 Car_Model.setBackground(new Color(244, 244, 244));
                 Car_Model.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 Car_Model.setMinimumSize(new Dimension(300, 47));
-                panel3.add(Car_Model, new GridConstraints(3, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                Car_Model.setPreferredSize(new Dimension(300, 47));
+                panel3.add(Car_Model, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- label5 ----
                 label5.setText("Car Price:");
                 label5.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-                panel3.add(label5, new GridConstraints(4, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel3.add(label5, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- CarPrice ----
                 CarPrice.setBackground(new Color(244, 244, 244));
                 CarPrice.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 CarPrice.setMinimumSize(new Dimension(300, 47));
                 CarPrice.setCursor(Cursor.getPredefinedCursor(Cursor.TEXT_CURSOR));
-                panel3.add(CarPrice, new GridConstraints(4, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                CarPrice.setPreferredSize(new Dimension(300, 47));
+                panel3.add(CarPrice, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- label6 ----
                 label6.setText("Down Payment:");
                 label6.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-                panel3.add(label6, new GridConstraints(5, 0, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                panel3.add(label6, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
 
                 //---- DownPayment ----
                 DownPayment.setBackground(new Color(244, 244, 244));
                 DownPayment.setBorder(new SoftBevelBorder(SoftBevelBorder.LOWERED));
                 DownPayment.setMinimumSize(new Dimension(300, 47));
-                panel3.add(DownPayment, new GridConstraints(5, 1, 1, 1,
-                    GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-                    null, null, null));
+                DownPayment.setPreferredSize(new Dimension(300, 47));
+                panel3.add(DownPayment, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
+                    GridBagConstraints.CENTER, GridBagConstraints.NONE,
+                    new Insets(0, 0, 0, 0), 0, 0));
             }
             panel1.add(panel3, BorderLayout.CENTER);
         }

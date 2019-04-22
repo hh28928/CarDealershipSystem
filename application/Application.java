@@ -346,6 +346,7 @@ class Application extends javax.swing.JFrame implements Publisher {
 	private void inventoryButtonActionPerformed(java.awt.event.ActionEvent evt) {  
 		//open the inventory                                            
 		InventoryPresenter inventory = new InventoryPresenter(broker);
+
 	}                                        
 
 	private void financeButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
