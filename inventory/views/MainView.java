@@ -2,6 +2,7 @@ package inventory.views;
 
 import java.util.Set;
 import java.lang.StringBuilder;
+import com.intellij.uiDesigner.core.*;
 import inventory.views.InventoryCarRenderable;
 import inventory.views.View;
 import inventory.presenters.InventoryPresenter;
@@ -136,4 +137,5 @@ public class MainView extends javax.swing.JFrame implements View {
 	private javax.swing.JList<String> inventoryList;
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JButton newItemButton;              
+
 }
