@@ -66,7 +66,7 @@ public class InventoryPresenter implements Publisher
 	
 	//loads inventory from a source
 	//TODO: add the ability to load from a file or something
-	private Set<InventoryCarModel> loadInventoryItems() {
+	public Set<InventoryCarModel> loadInventoryItems() {
 		Set<InventoryCarModel> items = new HashSet<InventoryCarModel>();
 		try {
 			items.add(new InventoryCarModel("0XV135ND234", "Honda", "Civic", "Blue", 20000));
