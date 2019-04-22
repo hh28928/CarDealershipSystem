@@ -44,13 +44,13 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
     public String render() {
 
         this.setVisible(true);
-        StringBuilder response = new StringBuilder(financed_cars.size() + "Financed Car\n");
+        StringBuilder response = new StringBuilder("Financed Car\n");
         response.append("Car Vin: " + this.vin +  "\nCar Make " +this.make+"\nCar Model "+this.model+"\nCar Color "+this.color+"\nCar Price "+this.price+"\nDown Payment "+this.amountPaid+ "\n");
         return response.toString();
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        // TODO add your code here
+
         try{
             this.vin = CarVin.getText();
             this.make = CarMake.getText();
@@ -59,7 +59,7 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
             this.price = Integer.parseInt(CarPrice.getText());
             this.amountPaid = Integer.parseInt(DownPayment.getText());
         }
-        catch (Exception e){
+        catch (Exception ex){
             JOptionPane.showMessageDialog(null, "It seems that something went wrong.\nMake sure that All fields have values.\nAlso make sure that -Price- and -Down Payment- are number values.");
             System.out.println("Error in adding financed vehical.");
         }
@@ -72,7 +72,7 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
     }
 
     private void backButtonActionPerformed(ActionEvent e) {
-        View new_view = new FinancedMainView(this.view, this.view.getFinanced_cars());
+        View new_view = new FinanceMainView(this.financedViewModel, this.financedViewModel.getFinanced_cars());
         this.financedViewModel.switchView(new_view);
     }
 

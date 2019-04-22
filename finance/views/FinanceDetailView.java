@@ -35,7 +35,7 @@ public class FinanceDetailView extends javax.swing.JFrame implements View {
     }
     public String render() {
         this.setVisible(true);
-        StringBuilder response = new StringBuilder(financed_cars.size() + "Financed Car\n");
+        StringBuilder response = new StringBuilder("Financed Car\n");
         CarModel tempCar = car.getCar();
         response.append("Car Vin: " + tempCar.getVIN() +  "\nCar Make " + tempCar.getMake()+"\nCar Model "+ tempCar.getModel()+"\nCar Color "+ tempCar.getColor()+"\nCar Price "
         + car.getPrice()+"\nDown Payment "+car.getAmount_paid()+ "\n");
@@ -44,7 +44,7 @@ public class FinanceDetailView extends javax.swing.JFrame implements View {
 
 
     private void okButtonActionPerformed(ActionEvent e) {
-        View new_view = new FinancedMainView(this.view, this.view.getFinanced_cars());
+        View new_view = new FinanceMainView(this.view, this.view.getFinanced_cars());
         this.view.switchView(new_view);
     }
 
