@@ -54,7 +54,7 @@ public class FinanceViewModel
             writer.close();
             this.financed_cars.add(new_car);
         }
-        catch (FileNotFoundException e)
+        catch (IOException e)
         {
             System.out.println("Sorry, but something was corupted with the information givin to addFinancedCar");
         }
