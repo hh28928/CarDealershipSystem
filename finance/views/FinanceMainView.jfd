@@ -9,48 +9,66 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "dialogPane"
 				"border": new javax.swing.border.EmptyBorder( 12, 12, 12, 12 )
-				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.swingx.VerticalLayout ) {
-					"gap": 100
+				add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.GridBagLayout ) {
+					"$columnSpecs": "left:0:1.0"
+					"$rowSpecs": "0, 0, 0, 0, 0, 0, 0, 0"
+					"$alignTop": true
+					"$alignLeft": true
+					"$vGap": 100
 				} ) {
 					name: "contentPanel"
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label2"
 						"text": "Interest Rates"
 						"font": new java.awt.Font( "Segoe UI", 0, 48 )
-					} )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label3"
 						"text": "4.3% for Most Customers"
 						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 1
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label4"
 						"text": "Down Payment "
 						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 2
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label5"
 						"text": "5% of total Car Value Minimum"
 						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 3
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label6"
 						"text": "Credit Score Low ?"
 						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 4
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label8"
 						"text": "Don't Worry, No Credit Score Needed"
 						"font": new java.awt.Font( "Segoe UI", 0, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 5
 					} )
 					add( new FormComponent( "javax.swing.JLabel" ) {
 						name: "label7"
 						"text": "Already Financed Find Vehicle by Entering VIN"
 						"font": new java.awt.Font( "Segoe UI", 0, 36 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 6
 					} )
 					add( new FormComponent( "javax.swing.JTextField" ) {
 						name: "vin"
 						"preferredSize": new java.awt.Dimension( 650, 48 )
+					}, new FormLayoutConstraints( class com.jformdesigner.runtime.GridBagConstraintsEx ) {
+						"gridy": 7
 					} )
 				}, new FormLayoutConstraints( class java.lang.String ) {
 					"value": "Center"
