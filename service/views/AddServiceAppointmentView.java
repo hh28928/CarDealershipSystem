@@ -4,6 +4,7 @@ import service.viewmodels.ServiceViewModel;
 import service.views.ServiceMainView;
 import java.time.*;
 import javax.swing.JOptionPane;
+import java.util.regex.*;
 
 public class AddServiceAppointmentView extends javax.swing.JFrame implements View
 {
@@ -204,6 +205,15 @@ public class AddServiceAppointmentView extends javax.swing.JFrame implements Vie
     {                                                            
       String email = email_textfield.getText();
       if(email.length() == 0) {JOptionPane.showMessageDialog(this, "Please specify an email address."); return;}
+      
+      Pattern p = Pattern.compile(".+@.+\\.com");
+      Matcher m = p.matcher(email);
+      
+      if(!m.find())
+      {
+        JOptionPane.showMessageDialog(this, "Please specify a valid email address.");
+        return;
+      }
       
       int month;
       int day;
