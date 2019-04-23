@@ -31,6 +31,7 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
     private int price;
     private int amountPaid;
     private FinanceViewModel financedViewModel;
+    
     public AddFinanceView(FinanceViewModel view) {
         this.vin = null;
         this.make = null;
@@ -39,13 +40,13 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
         this.price = 0;
         this.amountPaid = 0;
         this.financedViewModel = view;
-        initComponents();
     }
     public String render() {
-
-        this.setVisible(true);
+      
         StringBuilder response = new StringBuilder("Financed Car\n");
         response.append("Car Vin: " + this.vin +  "\nCar Make " +this.make+"\nCar Model "+this.model+"\nCar Color "+this.color+"\nCar Price "+this.price+"\nDown Payment "+this.amountPaid+ "\n");
+        initComponents();
+        this.setVisible(true);
         return response.toString();
     }
 
@@ -74,6 +75,7 @@ public class AddFinanceView extends javax.swing.JFrame implements View {
     private void backButtonActionPerformed(ActionEvent e) {
         View new_view = new FinanceMainView(this.financedViewModel, this.financedViewModel.getFinanced_cars());
         this.financedViewModel.switchView(new_view);
+        this.dispose();
     }
 
     private void initComponents() {

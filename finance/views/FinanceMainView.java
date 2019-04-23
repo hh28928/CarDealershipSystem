@@ -27,23 +27,23 @@ public class FinanceMainView extends javax.swing.JFrame implements View
     {
         this.financed_cars = financed_cars;
         this.viewModel = viewModel;
-        initComponents();
     }
 
     public String render() {
 
-        this.setVisible(true);
         StringBuilder response = new StringBuilder(financed_cars.size() + " CARS CURRENTLY BEING FINANCED:\nRESULT #\t VIN\n");
 
         int counter = 1;
         for (FinanceCarModel car : financed_cars) {
             response.append(counter++ + "\t\t" + car.toString() + "\n");
         }
+        initComponents();
+        this.setVisible(true);
         return response.toString();
     }
 
     private void button1ActionPerformed(ActionEvent e) {
-        this.setVisible(false);
+        this.dispose();
     }
 
     private void new_financeActionPerformed(ActionEvent e) {
@@ -60,6 +60,7 @@ public class FinanceMainView extends javax.swing.JFrame implements View
             if(enterd_vin.equals(temp_car.getVIN()))
             {
                 View view = new FinanceDetailView(this.viewModel,current_car);
+                viewModel.switchView(view);
             }
         }
         JOptionPane.showMessageDialog(null,"Car could not be found");
