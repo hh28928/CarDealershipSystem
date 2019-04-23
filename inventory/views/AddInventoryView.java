@@ -39,103 +39,133 @@ public class AddInventoryView extends JFrame implements View {
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Hammad Hanif
-        VIN_Lebal = new JLabel();
-        VIN_textBox = new JTextField();
-        Make_Label = new JLabel();
-        Make_textbox = new JTextField();
-        Model_Lebal = new JLabel();
-        Model_textbox = new JTextField();
-        Color_Label = new JLabel();
-        Color_textbox = new JTextField();
-        Price_Lebal = new JLabel();
-        Price_textbox = new JTextField();
-        back_button = new JButton();
-        button_add = new JButton();
+        label5 = new JLabel();
+        panel1 = new JPanel();
+        label6 = new JLabel();
+        scrollPane3 = new JScrollPane();
+        textArea_VIN = new JTextArea();
+        label7 = new JLabel();
+        scrollPane4 = new JScrollPane();
+        textArea_make = new JTextArea();
+        label8 = new JLabel();
+        scrollPane5 = new JScrollPane();
+        textArea_model = new JTextArea();
+        label9 = new JLabel();
+        scrollPane6 = new JScrollPane();
+        textArea_color = new JTextArea();
+        label10 = new JLabel();
+        scrollPane7 = new JScrollPane();
+        textArea_price = new JTextArea();
+        button_addNew = new JButton();
+        button_back = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
-        contentPane.setLayout(new GridLayoutManager(7, 3, new Insets(0, 0, 0, 0), -1, -1));
+        contentPane.setLayout(new BorderLayout());
 
-        //---- VIN_Lebal ----
-        VIN_Lebal.setText("VIN:");
-        contentPane.add(VIN_Lebal, new GridConstraints(1, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-        contentPane.add(VIN_textBox, new GridConstraints(1, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        //---- label5 ----
+        label5.setText("Add New Car to the Inventory");
+        contentPane.add(label5, BorderLayout.NORTH);
 
-        //---- Make_Label ----
-        Make_Label.setText("Make:");
-        contentPane.add(Make_Label, new GridConstraints(2, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-        contentPane.add(Make_textbox, new GridConstraints(2, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        //======== panel1 ========
+        {
 
-        //---- Model_Lebal ----
-        Model_Lebal.setText("Model:");
-        contentPane.add(Model_Lebal, new GridConstraints(3, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-        contentPane.add(Model_textbox, new GridConstraints(3, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+            // JFormDesigner evaluation mark
+            panel1.setBorder(new javax.swing.border.CompoundBorder(
+                new javax.swing.border.TitledBorder(new javax.swing.border.EmptyBorder(0, 0, 0, 0),
+                    "JFormDesigner Evaluation", javax.swing.border.TitledBorder.CENTER,
+                    javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dialog", java.awt.Font.BOLD, 12),
+                    java.awt.Color.red), panel1.getBorder())); panel1.addPropertyChangeListener(new java.beans.PropertyChangeListener(){public void propertyChange(java.beans.PropertyChangeEvent e){if("border".equals(e.getPropertyName()))throw new RuntimeException();}});
 
-        //---- Color_Label ----
-        Color_Label.setText("Color:");
-        contentPane.add(Color_Label, new GridConstraints(4, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-        contentPane.add(Color_textbox, new GridConstraints(4, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+            panel1.setLayout(new GridBagLayout());
+            ((GridBagLayout)panel1.getLayout()).columnWidths = new int[] {0, 0, 0};
+            ((GridBagLayout)panel1.getLayout()).rowHeights = new int[] {0, 0, 0, 0, 0, 0, 0, 0};
+            ((GridBagLayout)panel1.getLayout()).columnWeights = new double[] {0.0, 0.0, 1.0E-4};
+            ((GridBagLayout)panel1.getLayout()).rowWeights = new double[] {0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0E-4};
 
-        //---- Price_Lebal ----
-        Price_Lebal.setText("Price:");
-        contentPane.add(Price_Lebal, new GridConstraints(5, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-        contentPane.add(Price_textbox, new GridConstraints(5, 1, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+            //---- label6 ----
+            label6.setText("VIN");
+            panel1.add(label6, new GridBagConstraints(0, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
 
-        //---- back_button ----
-        back_button.setText("Backl");
-        contentPane.add(back_button, new GridConstraints(6, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+            //======== scrollPane3 ========
+            {
+                scrollPane3.setViewportView(textArea_VIN);
+            }
+            panel1.add(scrollPane3, new GridBagConstraints(1, 0, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
 
-        //---- button_add ----
-        button_add.setText("Add");
-        contentPane.add(button_add, new GridConstraints(6, 1, 1, 2,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+            //---- label7 ----
+            label7.setText("Make");
+            panel1.add(label7, new GridBagConstraints(0, 1, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+
+            //======== scrollPane4 ========
+            {
+                scrollPane4.setViewportView(textArea_make);
+            }
+            panel1.add(scrollPane4, new GridBagConstraints(1, 1, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
+
+            //---- label8 ----
+            label8.setText("Model");
+            panel1.add(label8, new GridBagConstraints(0, 2, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+
+            //======== scrollPane5 ========
+            {
+                scrollPane5.setViewportView(textArea_model);
+            }
+            panel1.add(scrollPane5, new GridBagConstraints(1, 2, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
+
+            //---- label9 ----
+            label9.setText("Color");
+            panel1.add(label9, new GridBagConstraints(0, 3, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+
+            //======== scrollPane6 ========
+            {
+                scrollPane6.setViewportView(textArea_color);
+            }
+            panel1.add(scrollPane6, new GridBagConstraints(1, 3, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
+
+            //---- label10 ----
+            label10.setText("Price");
+            panel1.add(label10, new GridBagConstraints(0, 4, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 5), 0, 0));
+
+            //======== scrollPane7 ========
+            {
+                scrollPane7.setViewportView(textArea_price);
+            }
+            panel1.add(scrollPane7, new GridBagConstraints(1, 4, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 5, 0), 0, 0));
+
+            //---- button_addNew ----
+            button_addNew.setText("Add");
+            panel1.add(button_addNew, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 5), 0, 0));
+
+            //---- button_back ----
+            button_back.setText("Back");
+            panel1.add(button_back, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0,
+                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
+                new Insets(0, 0, 0, 0), 0, 0));
+        }
+        contentPane.add(panel1, BorderLayout.CENTER);
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -143,18 +173,25 @@ public class AddInventoryView extends JFrame implements View {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Hammad Hanif
-    private JLabel VIN_Lebal;
-    private JTextField VIN_textBox;
-    private JLabel Make_Label;
-    private JTextField Make_textbox;
-    private JLabel Model_Lebal;
-    private JTextField Model_textbox;
-    private JLabel Color_Label;
-    private JTextField Color_textbox;
-    private JLabel Price_Lebal;
-    private JTextField Price_textbox;
-    private JButton back_button;
-    private JButton button_add;
+    private JLabel label5;
+    private JPanel panel1;
+    private JLabel label6;
+    private JScrollPane scrollPane3;
+    private JTextArea textArea_VIN;
+    private JLabel label7;
+    private JScrollPane scrollPane4;
+    private JTextArea textArea_make;
+    private JLabel label8;
+    private JScrollPane scrollPane5;
+    private JTextArea textArea_model;
+    private JLabel label9;
+    private JScrollPane scrollPane6;
+    private JTextArea textArea_color;
+    private JLabel label10;
+    private JScrollPane scrollPane7;
+    private JTextArea textArea_price;
+    private JButton button_addNew;
+    private JButton button_back;
         // JFormDesigner - End of variables declaration  //GEN-END:variables
 
 
@@ -166,11 +203,11 @@ public class AddInventoryView extends JFrame implements View {
 
     private void button_addActionPerformed(ActionEvent e) {
         try {
-            this.vin = VIN_textBox.getText();
-            this.make = Make_textbox.getText();
-            this.model = Model_textbox.getText();
-            this.color = Color_textbox.getText();
-            this.price = Integer.parseInt(Price_textbox.getText());
+            this.vin = textArea_VIN.getText();
+            this.make = textArea_make.getText();
+            this.model = textArea_model.getText();
+            this.color = textArea_color.getText();
+            this.price = Integer.parseInt(textArea_price.getText());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "It seems that something went wrong.");
             System.out.println("Error in adding a new vehicle to the inventory");

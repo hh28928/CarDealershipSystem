@@ -128,9 +128,14 @@ public class MainView extends javax.swing.JFrame implements View {
 
 	private void newItemButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
 		// TODO open the new item window here
-		System.out.println("Need to add a new item");
-	}               
-	
+		View new_view = new AddInventoryView(presenter);
+		this.presenter.switchView(new_view)
+	}
+
+	private void detailedViewActionPerformed(ActionEvent e) {
+		View new_view = new InventoryMainView(presenter, renderItems);
+		this.presenter.switchView(new_view);
+	}
 
 	private javax.swing.JButton backButton;
 	private javax.swing.JLabel inventoryLabel;
@@ -138,4 +143,44 @@ public class MainView extends javax.swing.JFrame implements View {
 	private javax.swing.JScrollPane jScrollPane1;
 	private javax.swing.JButton newItemButton;              
 
+
+    private void initComponents() {
+        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
+        // Generated using JFormDesigner Evaluation license - Hammad Hanif
+        label1 = new JLabel();
+        addNew = new JButton();
+        button_back = new JButton();
+        detailedView = new JButton();
+
+        //======== this ========
+        Container contentPane = getContentPane();
+        contentPane.setLayout(new BorderLayout());
+
+        //---- label1 ----
+        label1.setText("Main View");
+        contentPane.add(label1, BorderLayout.NORTH);
+
+        //---- addNew ----
+        addNew.setText("Add a New Car");
+        contentPane.add(addNew, BorderLayout.WEST);
+
+        //---- button_back ----
+        button_back.setText("Back");
+        contentPane.add(button_back, BorderLayout.SOUTH);
+
+        //---- detailedView ----
+        detailedView.setText(" View Inventory");
+        contentPane.add(detailedView, BorderLayout.EAST);
+        pack();
+        setLocationRelativeTo(getOwner());
+        // JFormDesigner - End of component initialization  //GEN-END:initComponents
+    }
+
+    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
+    // Generated using JFormDesigner Evaluation license - Hammad Hanif
+    private JLabel label1;
+    private JButton addNew;
+    private JButton button_back;
+    private JButton detailedView;
+    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
