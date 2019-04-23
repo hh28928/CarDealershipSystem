@@ -40,6 +40,8 @@ class Application extends javax.swing.JFrame implements Publisher {
 		svm = new ServiceViewModel(broker);
 		//init Finance system
 		fvm = new FinanceViewModel();
+		//init Inventory system
+		Ip = new InventoryPresenter(broker);
 
 		//public void addAppointment(String email, String vin, String make, String model, String color, LocalDate date, String comments, int id)
 		//public ServiceAppointmentModel(CarModel c_model, String comments, LocalDate date, String email, int id)
