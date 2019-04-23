@@ -1,5 +1,8 @@
 package inventory.views;
 
+import inventory.models.InventoryCarModel;
+import inventory.presenters.InventoryPresenter;
+import java.util.Set;
 import java.awt.*;
 import javax.swing.*;
 

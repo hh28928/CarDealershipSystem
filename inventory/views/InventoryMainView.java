@@ -1,9 +1,10 @@
 package inventory.views;
 
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Set;
 import java.lang.StringBuilder;
-import com.intellij.uiDesigner.core.*;
 import inventory.models.InventoryCarModel;
 import inventory.views.InventoryCarRenderable;
 import inventory.views.View;
@@ -23,6 +24,7 @@ public class InventoryMainView extends javax.swing.JFrame implements View {
 	private InventoryPresenter presenter;
 	private MainView mainView;
 	private Set<InventoryCarModel> inventoryItems;
+	String findVin;
 	public InventoryMainView(Set<InventoryCarRenderable> items, InventoryPresenter presenter, MainView mainView) {
 		this.renderItems = items;
 		this.presenter = presenter;
@@ -50,23 +52,18 @@ public class InventoryMainView extends javax.swing.JFrame implements View {
 	}
 
 	private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {                                           
-		this.setVisible(false);
-	}                                          
-
-	private void newItemButtonActionPerformed(java.awt.event.ActionEvent evt) {                                              
-		// TODO open the new item window here
-		View new_view = new AddInventoryView(presenter);
+		View new_view = new MainView(inventoryItems, presenter);
 		this.presenter.switchView(new_view);
 	}
 
 	private void detailedViewButtonActionPerformed(ActionEvent e) {
-		String enterd_vin = vin.getText();
-		for (InventoryCarRenderable current : this.renderItems) {
-			if (enterd_vin.equals(current.getVIN())) {
-				View view = new DetailView(presenter, current);
-			}
-		}
-		JOptionPane.showMessageDialog(null, "This VIN number is not in inventory");
+        for (InventoryCarRenderable s: renderItems) {
+            if(s.getVIN().equals(findVin)) {
+                View new_view = new DetailView(presenter, s);
+                this.presenter.switchView(new_view);
+            }
+
+        }
 	}
 
 	private javax.swing.JButton backButton;
@@ -80,80 +77,44 @@ public class InventoryMainView extends javax.swing.JFrame implements View {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - Hammad Hanif
         label1 = new JLabel();
-        label2 = new JLabel();
-        label3 = new JLabel();
         scrollPane1 = new JScrollPane();
-        vin = new JTextArea();
-        addNewButton = new JButton();
-        detailedViewButton = new JButton();
-        backButton = new JButton();
+        list1 = new JList();
+        button1 = new JButton();
+        button2 = new JButton();
 
+        list1.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                JList list = (JList) e.getSource();
+                if (e.getClickCount() == 1) {
+                    int index = list.locationToIndex(e.getPoint());
+                    if (index >= 0) {
+                        findVin = list.getModel().getElementAt(index).toString();
+                    }
+                }
+            }
+        });
         //======== this ========
         Container contentPane = getContentPane();
-        contentPane.setLayout(new GridLayoutManager(7, 1, new Insets(0, 0, 0, 0), -1, -1));
+        contentPane.setLayout(new BorderLayout());
 
         //---- label1 ----
-        label1.setText("Inventory");
-        label1.setPreferredSize(new Dimension(100, 45));
-        label1.setHorizontalTextPosition(SwingConstants.CENTER);
-        label1.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-        contentPane.add(label1, new GridConstraints(0, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- label2 ----
-        label2.setText("Check Out Latest Inventory");
-        label2.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-        contentPane.add(label2, new GridConstraints(1, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- label3 ----
-        label3.setText("Enter VIN number to checkout Details:");
-        label3.setFont(new Font("Segoe UI", Font.PLAIN, 40));
-        contentPane.add(label3, new GridConstraints(2, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        label1.setText("Inventory Main View");
+        contentPane.add(label1, BorderLayout.NORTH);
 
         //======== scrollPane1 ========
         {
-            scrollPane1.setViewportView(vin);
+            scrollPane1.setViewportView(list1);
         }
-        contentPane.add(scrollPane1, new GridConstraints(3, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        contentPane.add(scrollPane1, BorderLayout.WEST);
 
-        //---- addNewButton ----
-        addNewButton.setText("Add a New car");
-        contentPane.add(addNewButton, new GridConstraints(4, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        //---- button1 ----
+        button1.setText("Detailed View");
+        contentPane.add(button1, BorderLayout.CENTER);
 
-        //---- detailedViewButton ----
-        detailedViewButton.setText("Detailed View");
-        contentPane.add(detailedViewButton, new GridConstraints(5, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
-
-        //---- backButton ----
-        backButton.setText("Back");
-        contentPane.add(backButton, new GridConstraints(6, 0, 1, 1,
-            GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW,
-            null, null, null));
+        //---- button2 ----
+        button2.setText("Back");
+        contentPane.add(button2, BorderLayout.EAST);
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
@@ -162,11 +123,9 @@ public class InventoryMainView extends javax.swing.JFrame implements View {
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - Hammad Hanif
     private JLabel label1;
-    private JLabel label2;
-    private JLabel label3;
     private JScrollPane scrollPane1;
-    private JTextArea vin;
-    private JButton addNewButton;
-    private JButton detailedViewButton;
+    private JList list1;
+    private JButton button1;
+    private JButton button2;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

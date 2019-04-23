@@ -3,16 +3,16 @@ package inventory.views;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import javax.swing.*;
+import java.util.Set;
 import javax.swing.border.*;
-import com.intellij.uiDesigner.core.*;
 import com.sun.org.apache.xpath.internal.operations.String;
+import inventory.models.InventoryCarModel;
 import inventory.presenters.InventoryPresenter;
 
 public class DetailView extends javax.swing.JFrame implements View {
 	private InventoryPresenter mainview;
 	private InventoryCarRenderable car;
-	private int millage;
-	private String description;
+	private Set<InventoryCarModel> carModels;
 
 	public DetailView(InventoryPresenter view, InventoryCarRenderable car) {
 	    this.mainview = view;
@@ -20,25 +20,22 @@ public class DetailView extends javax.swing.JFrame implements View {
 	    initComponents();
     }
 
-	public DetailView(InventoryPresenter view, InventoryCarRenderable car, int millage, String description) {
-		this.mainview = view;
-		this.car = car;
-		this.millage = millage;
-		this.description = description;
-		initComponents();
-	}
-
 	public java.lang.String render() {
 		this.setVisible(true);
 		StringBuilder response = new StringBuilder("Car in inventory\n");
 		response.append("Car Vin: " + car.getVIN() +  "\nCar Make " + car.getMake()+"\nCar Model "+ car.getModel()+"\nCar Color "+ car.getColor()+"\nCar Price "
-				+ car.getPrice()+"\nMillage " + millage + "\nDescription " + description);
+				+ car.getPrice());
 		return response.toString();
 	}
 
     private void okButtonActionPerformed(ActionEvent e) {
         View new_view = new InventoryMainView(this.mainview, this.mainview.getInventoryItems());
         this.mainview.switchView(new_view);
+    }
+
+    private void button_backActionPerformed(ActionEvent e) {
+	    View new_view = new InventoryMainView(mainview, carModels);
+	    this.mainview.switchView(new_view);
     }
 
     private void initComponents() {
@@ -57,14 +54,16 @@ public class DetailView extends javax.swing.JFrame implements View {
         label9 = new JLabel();
         price = new JLabel();
         label10 = new JLabel();
-        millage = new JLabel();
-        label11 = new JLabel();
-        description = new JLabel();
-        button_back = new JButton();
 
         //======== this ========
         Container contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
+
+        vin.setText(car.getVIN());
+        make.setText(car.getMake());
+        model.setText(car.getModel());
+        color.setText(car.getColor());
+        price.setText(Integer.toString(car.getPrice()));
 
         //---- label1 ----
         label1.setText("Detailed View");
@@ -146,30 +145,6 @@ public class DetailView extends javax.swing.JFrame implements View {
                 GridBagConstraints.CENTER, GridBagConstraints.BOTH,
                 new Insets(0, 0, 5, 0), 0, 0));
 
-            //---- label10 ----
-            label10.setText("Millage");
-            panel1.add(label10, new GridBagConstraints(0, 5, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
-
-            //---- millage ----
-            millage.setText("text");
-            panel1.add(millage, new GridBagConstraints(1, 5, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
-
-            //---- label11 ----
-            label11.setText("Description");
-            panel1.add(label11, new GridBagConstraints(0, 6, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 5), 0, 0));
-
-            //---- description ----
-            description.setText("text");
-            panel1.add(description, new GridBagConstraints(1, 6, 1, 1, 0.0, 0.0,
-                GridBagConstraints.CENTER, GridBagConstraints.BOTH,
-                new Insets(0, 0, 5, 0), 0, 0));
-
             //---- button_back ----
             button_back.setText("Back");
             panel1.add(button_back, new GridBagConstraints(0, 7, 1, 1, 0.0, 0.0,
@@ -197,12 +172,9 @@ public class DetailView extends javax.swing.JFrame implements View {
     private JLabel label9;
     private JLabel price;
     private JLabel label10;
-    private JLabel millage;
     private JLabel label11;
-    private JLabel description;
     private JButton button_back;
 
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 
-    public void
 }
