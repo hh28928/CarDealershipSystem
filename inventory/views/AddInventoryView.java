@@ -195,32 +195,31 @@ public class AddInventoryView extends JFrame implements View {
 
 
 
-    private void back_buttonActionPerformed(ActionEvent e) {
-        View new_view = new InventoryMainView(this.presenter, this.presenter.getInventoryItems());
-        this.presenter.switchView(new_view);
+    private void button_backActionPerformed(ActionEvent e) {
+        this.setVisible(false);
     }
 
-    private void button_addActionPerformed(ActionEvent e) {
+    private void button_addNewActionPerformed(ActionEvent e) {
         try {
-            this.vin = textArea_VIN.getText();
-            this.make = textArea_make.getText();
-            this.model = textArea_model.getText();
-            this.color = textArea_color.getText();
-            this.price = Integer.parseInt(textArea_price.getText());
+            vin = textArea_VIN.getText();
+            make = textArea_make.getText();
+            model = textArea_model.getText();
+            color = textArea_color.getText();
+            price = Integer.parseInt(textArea_price.getText());
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(null, "It seems that something went wrong.");
             System.out.println("Error in adding a new vehicle to the inventory");
         }
-        InventoryCarModel newcar = new InventoryCarModel(this.vin, this.make, this.model, this.color, this.price);
         this.presenter.addInventoryItem(this.vin, this.make, this.model, this.color, this.price);
         JOptionPane.showMessageDialog(null,"A new car is successfully added in the inventory system");
+        render();
     }
 
     @Override
     public String render() {
         this.setVisible(true);
         StringBuilder response = new StringBuilder("Financed Car\n");
-        response.append("Car Vin: " + this.vin +  "\nCar Make " +this.make+"\nCar Model "+this.model+"\nCar Color "+this.color+"\nCar Price "+this.price + "\n");
+        response.append("Car Vin: " + this.vin +  "\nCar Make " + this.make + "\nCar Model "+ this.model + "\nCar Color " + this.color + "\nCar Price "+this.price + "\n");
         return response.toString();
     }
 

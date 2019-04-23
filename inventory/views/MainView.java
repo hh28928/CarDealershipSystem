@@ -133,11 +133,6 @@ public class MainView extends javax.swing.JFrame implements View {
 		this.presenter.switchView(new_view);
 	}
 
-	private void detailedViewActionPerformed(ActionEvent e) {
-		View new_view = new InventoryMainView(presenter, renderItems);
-		this.presenter.switchView(new_view);
-	}
-
 	private javax.swing.JButton backButton;
 	private javax.swing.JLabel inventoryLabel;
 	private javax.swing.JList<String> inventoryList;
