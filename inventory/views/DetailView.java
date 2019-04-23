@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.border.*;
 import com.intellij.uiDesigner.core.*;
-import com.sun.org.apache.xpath.internal.operations.String;
+//import com.sun.org.apache.xpath.internal.operations.String;
 import inventory.presenters.InventoryPresenter;
 
 public class DetailView extends javax.swing.JFrame implements View {
